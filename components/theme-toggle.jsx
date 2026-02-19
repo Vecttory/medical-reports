@@ -23,7 +23,7 @@ export function ThemeToggle() {
       className="p-2 rounded-md hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
       aria-label="Toggle theme"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {theme === "dark" ? <Sun color="#ffce1b" size={20} /> : <Moon size={20} />}
     </button>
   );
 }

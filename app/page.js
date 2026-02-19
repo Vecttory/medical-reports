@@ -12,7 +12,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium mt-1 py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {pending ? "Generando documento..." : "Generar Reporte"}
     </button>
@@ -23,26 +23,29 @@ export default function Home() {
   const [state, formAction] = useActionState(processReport, null);
 
   return (
-    <div className="min-h-screen p-6 sm:p-12">
-      <header className="flex justify-between items-center mb-10 max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold tracking-tight">Reportes Médicos</h1>
+    <div className="min-h-screen p-6 sm:p-12 relative">
+      {/* Botón de tema en la esquina superior derecha */}
+      <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
         <ThemeToggle />
+      </div>
+
+      <header className="mb-10 max-w-2xl mx-auto text-center pt-8 sm:pt-0">
+        <h1 className="text-3xl font-bold tracking-tight">Reportes Médicos</h1>
       </header>
 
-      <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-800/50">
+      <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-700">
         <form action={formAction} className="space-y-6">
           {/* Nombre */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
-              Nombre Completo
+              Nombre Del Paciente
             </label>
             <input
               type="text"
               id="name"
               name="name"
               required
-              placeholder="Juan Pérez"
-              className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
             />
           </div>
 
@@ -58,22 +61,7 @@ export default function Home() {
                 name="age"
                 min="0"
                 required
-                placeholder="30"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-              />
-            </div>
-
-            {/* Fecha */}
-            <div>
-              <label htmlFor="date" className="block text-sm font-medium mb-2">
-                Fecha
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                required
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
 
@@ -89,15 +77,14 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
-                placeholder="70.5"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
 
             {/* Estatura */}
             <div>
               <label htmlFor="height" className="block text-sm font-medium mb-2">
-                Estatura (cm)
+                Estatura (mts)
               </label>
               <input
                 type="number"
@@ -106,8 +93,21 @@ export default function Home() {
                 step="0.1"
                 min="0"
                 required
-                placeholder="175"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              />
+            </div>
+
+            {/* Fecha */}
+            <div>
+              <label htmlFor="date" className="block text-sm font-medium mb-2">
+                Fecha
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                required
+                className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
           </div>
@@ -117,12 +117,11 @@ export default function Home() {
             <label htmlFor="reference" className="block text-sm font-medium mb-2">
               Referencia (Opcional)
             </label>
-            <textarea
+            <input
+              type="text"
               id="reference"
               name="reference"
-              rows={3}
-              placeholder="Detalles adicionales o motivo de consulta..."
-              className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-none"
+              className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
             />
           </div>
 
