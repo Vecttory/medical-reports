@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState, startTransition } from "react";
+import { useActionState, useState, useEffect, startTransition } from "react";
 import { processReport } from "./actions";
 import { ThemeToggle } from "../components/theme-toggle";
 
@@ -28,6 +28,17 @@ export default function Home() {
     });
   };
 
+  useEffect(() => {
+    if (state?.success && state?.documentBase64) {
+      const link = document.createElement("a");
+      link.href = `data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,${state.documentBase64}`;
+      link.download = state.fileName || "Reporte_Medico.docx";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }, [state]);
+
   return (
     <div className="min-h-screen p-6 sm:p-12 relative">
       {/* Botón de tema en la esquina superior derecha */}
@@ -43,7 +54,7 @@ export default function Home() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nombre */}
           <div>
-            <label htmlFor="name" className="block text-sm font-bold mb-2">
+            <label htmlFor="name" className="block text-sm font-medium mb-2">
               Nombre Del Paciente
             </label>
             <input
@@ -58,7 +69,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Edad */}
             <div>
-              <label htmlFor="age" className="block text-sm font-bold mb-2">
+              <label htmlFor="age" className="block text-sm font-medium mb-2">
                 Edad
               </label>
               <input
@@ -74,7 +85,7 @@ export default function Home() {
             {/* Peso */}
             <div>
               <div className="flex items-center space-x-4 mb-2">
-                <label htmlFor="weight" className="block text-sm font-bold">
+                <label htmlFor="weight" className="block text-sm font-medium">
                   Peso
                 </label>
                 <div className="flex items-center space-x-3 text-sm">
@@ -101,14 +112,14 @@ export default function Home() {
 
             {/* Estatura */}
             <div>
-              <label htmlFor="height" className="block text-sm font-bold mb-2">
+              <label htmlFor="height" className="block text-sm font-medium mb-2">
                 Estatura (mts)
               </label>
               <input
                 type="number"
                 id="height"
                 name="height"
-                step="0.1"
+                step="0.01"
                 min="0"
                 required
                 className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -117,7 +128,7 @@ export default function Home() {
 
             {/* Fecha */}
             <div>
-              <label htmlFor="date" className="block text-sm font-bold mb-2">
+              <label htmlFor="date" className="block text-sm font-medium mb-2">
                 Fecha
               </label>
               <input
@@ -134,7 +145,7 @@ export default function Home() {
           {/* Referencia */}
           <div>
             <div className="flex items-center space-x-4 mb-2">
-              <label className="block text-sm font-bold">
+              <label className="block text-sm font-medium">
                 Referencia
               </label>
               <div className="flex items-center space-x-3 text-sm">
@@ -142,7 +153,7 @@ export default function Home() {
                   <input 
                     type="radio" 
                     name="hasReference" 
-                    value="no" 
+                    value="false" 
                     checked={!hasReference}
                     onChange={() => setHasReference(false)}
                     className="text-blue-600 focus:ring-blue-500" 
@@ -153,7 +164,7 @@ export default function Home() {
                   <input 
                     type="radio" 
                     name="hasReference" 
-                    value="yes" 
+                    value="true" 
                     checked={hasReference}
                     onChange={() => setHasReference(true)}
                     className="text-blue-600 focus:ring-blue-500" 
