@@ -54,7 +54,7 @@ export default function Home() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nombre */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="block text-sm font-bold mb-2">
               Nombre Del Paciente
             </label>
             <input
@@ -69,7 +69,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Edad */}
             <div>
-              <label htmlFor="age" className="block text-sm font-medium mb-2">
+              <label htmlFor="age" className="block text-sm font-bold mb-2">
                 Edad
               </label>
               <input
@@ -85,7 +85,7 @@ export default function Home() {
             {/* Peso */}
             <div>
               <div className="flex items-center space-x-4 mb-2">
-                <label htmlFor="weight" className="block text-sm font-medium">
+                <label htmlFor="weight" className="block text-sm font-bold">
                   Peso
                 </label>
                 <div className="flex items-center space-x-3 text-sm">
@@ -112,7 +112,7 @@ export default function Home() {
 
             {/* Estatura */}
             <div>
-              <label htmlFor="height" className="block text-sm font-medium mb-2">
+              <label htmlFor="height" className="block text-sm font-bold mb-2">
                 Estatura (mts)
               </label>
               <input
@@ -128,7 +128,7 @@ export default function Home() {
 
             {/* Fecha */}
             <div>
-              <label htmlFor="date" className="block text-sm font-medium mb-2">
+              <label htmlFor="date" className="block text-sm font-bold mb-2">
                 Fecha
               </label>
               <input
@@ -145,7 +145,7 @@ export default function Home() {
           {/* Referencia */}
           <div>
             <div className="flex items-center space-x-4 mb-2">
-              <label className="block text-sm font-medium">
+              <label className="block text-sm font-bold">
                 Referencia
               </label>
               <div className="flex items-center space-x-3 text-sm">
