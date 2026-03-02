@@ -50,12 +50,12 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
     <div 
       id={id} 
       ref={sectionRef}
-      className={`scroll-mt-8 group border border-slate-200 dark:border-slate-500 bg-white/30 dark:bg-slate-900/30 ${!isFirst ? '-mt-px' : ''} ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'z-10 relative bg-white/70 dark:bg-slate-900/70' : 'z-0'}`}
+      className={`scroll-mt-8 group border border-slate-300 dark:border-slate-500 bg-white/30 dark:bg-slate-900/30 ${!isFirst ? '-mt-px' : ''} ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'z-10 relative bg-white/70 dark:bg-slate-900/70' : 'z-0'}`}
     >
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isFirst && isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
+        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isFirst && isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-300 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
       >
         {title}
         <div className={`p-1.5 rounded-full transition-colors ${isActuallyOpen ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'bg-slate-100 dark:bg-slate-800'}`}>
@@ -151,7 +151,7 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="flex flex-col">
+        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="flex flex-col" autoComplete="off">
 
           {/* SECCIÓN: PACIENTE */}
           <AccordionSection 
@@ -256,9 +256,9 @@ export default function Home() {
           {/* Referencia */}
           <div>
             <div className="flex items-center space-x-4">
-              <label className="block text-sm font-bold">
+              <span className="block text-sm font-bold">
                 Referencia
-              </label>
+              </span>
               <div className="flex items-center space-x-3 text-sm">
                 <label className="flex items-center space-x-1 cursor-pointer">
                   <input 
@@ -289,6 +289,7 @@ export default function Home() {
                 type="text"
                 id="reference"
                 name="reference"
+                aria-label="Detalle de referencia"
                 required
                 className="w-full px-4 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
