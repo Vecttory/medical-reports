@@ -50,7 +50,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold tracking-tight">Reportes Médicos</h1>
       </header>
 
-      <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-700">
+      <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nombre */}
           <div>
