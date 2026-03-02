@@ -17,26 +17,38 @@ function SubmitButton({ pending }) {
   );
 }
 
-function AccordionSection({ title, defaultOpen = false, children }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, children }) {
+  // If controlled (isOpen/onToggle provided), use those, otherwise fallback to internal state
+  const [internalIsOpen, setInternalIsOpen] = useState(defaultOpen);
+  const isActuallyOpen = isOpen !== undefined ? isOpen : internalIsOpen;
+  
+  const handleToggle = () => {
+    if (onToggle) {
+      onToggle();
+    } else {
+      setInternalIsOpen(!internalIsOpen);
+    }
+  };
 
   return (
-    <div className="group">
+    <div id={id} className="group border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white/30 dark:bg-slate-900/30">
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full text-left text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2 cursor-pointer transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+        onClick={handleToggle}
+        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50' : ''}`}
       >
         {title}
-        <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+        <div className={`p-1.5 rounded-full transition-colors ${isActuallyOpen ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'bg-slate-100 dark:bg-slate-800'}`}>
+          <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isActuallyOpen ? "rotate-180" : ""}`} />
+        </div>
       </button>
       <div
         className={`grid transition-all duration-300 ease-in-out ${
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          isActuallyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden p-1 -m-1">
-          <div className="pt-6">
+          <div className="p-5 pt-6">
             {children}
           </div>
         </div>
@@ -48,6 +60,45 @@ function AccordionSection({ title, defaultOpen = false, children }) {
 export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
   const [hasReference, setHasReference] = useState(false);
+  
+  // State for accordions
+  const [openSections, setOpenSections] = useState({
+    paciente: true,
+    ventriculoIzquierdo: false
+  });
+
+  const toggleSection = (section) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  // Check for invalid fields on form submit attempt
+  const handleInvalid = (e) => {
+    // We do NOT call e.preventDefault() here so the browser can show its native tooltip.
+    
+    const form = e.currentTarget;
+    // Find ALL invalid elements currently on the form
+    const invalidElements = form.querySelectorAll(':invalid');
+    if (invalidElements.length === 0) return;
+    
+    // Only care about the VERY FIRST invalid element
+    const firstInvalid = invalidElements[0];
+    
+    // If the event target isn't the first invalid element, ignore it.
+    // This prevents the event from firing and opening multiple sections for subsequent invalid fields.
+    if (e.target !== firstInvalid) return;
+
+    const sectionId = firstInvalid.closest('.group')?.id;
+    
+    if (sectionId) {
+      setOpenSections(prev => ({
+        ...prev,
+        [sectionId]: true
+      }));
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,10 +131,15 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="space-y-6">
           
           {/* SECCIÓN: PACIENTE */}
-          <AccordionSection title="Paciente" defaultOpen={true}>
+          <AccordionSection 
+            id="paciente"
+            title="Paciente" 
+            isOpen={openSections.paciente}
+            onToggle={() => toggleSection('paciente')}
+          >
             <div className="space-y-6">
             
             {/* Nombre */}
@@ -221,7 +277,12 @@ export default function Home() {
           </AccordionSection>
 
           {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
-          <AccordionSection title="Ventrículo Izquierdo">
+          <AccordionSection 
+            id="ventriculoIzquierdo"
+            title="Ventrículo Izquierdo"
+            isOpen={openSections.ventriculoIzquierdo}
+            onToggle={() => toggleSection('ventriculoIzquierdo')}
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               <div>
