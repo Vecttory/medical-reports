@@ -1,13 +1,10 @@
 "use client";
 
-import { useActionState, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useActionState, useState, startTransition } from "react";
 import { processReport } from "./actions";
 import { ThemeToggle } from "../components/theme-toggle";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  
+function SubmitButton({ pending }) {
   return (
     <button
       type="submit"
@@ -20,8 +17,16 @@ function SubmitButton() {
 }
 
 export default function Home() {
-  const [state, formAction] = useActionState(processReport, null);
+  const [state, formAction, isPending] = useActionState(processReport, null);
   const [hasReference, setHasReference] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    startTransition(() => {
+      formAction(formData);
+    });
+  };
 
   return (
     <div className="min-h-screen p-6 sm:p-12 relative">
@@ -35,7 +40,7 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-700">
-        <form action={formAction} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nombre */}
           <div>
             <label htmlFor="name" className="block text-sm font-bold mb-2">
@@ -181,7 +186,7 @@ export default function Home() {
             </div>
           )}
 
-          <SubmitButton />
+          <SubmitButton pending={isPending} />
         </form>
       </main>
     </div>
