@@ -3,6 +3,7 @@
 import { useActionState, useState, useEffect, startTransition } from "react";
 import { processReport } from "./actions";
 import { ThemeToggle } from "../components/theme-toggle";
+import { ChevronDown } from "lucide-react";
 
 function SubmitButton({ pending }) {
   return (
@@ -13,6 +14,34 @@ function SubmitButton({ pending }) {
     >
       {pending ? "Generando documento..." : "Generar Reporte"}
     </button>
+  );
+}
+
+function AccordionSection({ title, defaultOpen = false, children }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="group">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex justify-between items-center w-full text-left text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2 cursor-pointer transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+      >
+        {title}
+        <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden p-1 -m-1">
+          <div className="pt-6">
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -51,11 +80,11 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           
           {/* SECCIÓN: PACIENTE */}
-          <section className="space-y-6">
-            <h2 className="text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2">Paciente</h2>
+          <AccordionSection title="Paciente" defaultOpen={true}>
+            <div className="space-y-6">
             
             {/* Nombre */}
           <div>
@@ -188,11 +217,11 @@ export default function Home() {
               />
             )}
           </div>
-          </section>
+          </div>
+          </AccordionSection>
 
           {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
-          <section className="space-y-6">
-            <h2 className="text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2">Ventrículo Izquierdo</h2>
+          <AccordionSection title="Ventrículo Izquierdo">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               <div>
@@ -434,7 +463,7 @@ export default function Home() {
               </div>
 
             </div>
-          </section>
+          </AccordionSection>
 
           {/* Mensajes de estado */}
           {state?.error && (
