@@ -255,7 +255,7 @@ export default function Home() {
 
           {/* Referencia */}
           <div>
-            <div className="flex items-center space-x-4 mb-2">
+            <div className="flex items-center space-x-4">
               <label className="block text-sm font-bold">
                 Referencia
               </label>
