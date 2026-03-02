@@ -17,7 +17,7 @@ function SubmitButton({ pending }) {
   );
 }
 
-function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, children }) {
+function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, children, isFirst, isLast }) {
   // If controlled (isOpen/onToggle provided), use those, otherwise fallback to internal state
   const [internalIsOpen, setInternalIsOpen] = useState(defaultOpen);
   const isActuallyOpen = isOpen !== undefined ? isOpen : internalIsOpen;
@@ -31,11 +31,14 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
   };
 
   return (
-    <div id={id} className="group border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white/30 dark:bg-slate-900/30">
+    <div 
+      id={id} 
+      className={`group border border-slate-200 dark:border-slate-500 bg-white/30 dark:bg-slate-900/30 ${!isFirst ? '-mt-px' : ''} ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'z-10 relative bg-white/70 dark:bg-slate-900/70' : 'z-0'}`}
+    >
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50' : ''}`}
+        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
       >
         {title}
         <div className={`p-1.5 rounded-full transition-colors ${isActuallyOpen ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'bg-slate-100 dark:bg-slate-800'}`}>
@@ -131,32 +134,33 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="space-y-6">
-          
+        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="flex flex-col">
+
           {/* SECCIÓN: PACIENTE */}
           <AccordionSection 
             id="paciente"
             title="Paciente" 
             isOpen={openSections.paciente}
             onToggle={() => toggleSection('paciente')}
+            isFirst={true}
           >
-            <div className="space-y-6">
+            <div className="space-y-4">
             
             {/* Nombre */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-bold mb-2">
-              Nombre Del Paciente
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            />
+            <div>
+              <label htmlFor="name" className="block text-sm font-bold mb-2">
+                Nombre Del Paciente
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
             {/* Edad */}
             <div>
               <label htmlFor="age" className="block text-sm font-bold mb-2">
@@ -276,14 +280,15 @@ export default function Home() {
           </div>
           </AccordionSection>
 
-          {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
-          <AccordionSection 
-            id="ventriculoIzquierdo"
-            title="Ventrículo Izquierdo"
-            isOpen={openSections.ventriculoIzquierdo}
-            onToggle={() => toggleSection('ventriculoIzquierdo')}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
+            <AccordionSection 
+              id="ventriculoIzquierdo"
+              title="Ventrículo Izquierdo"
+              isOpen={openSections.ventriculoIzquierdo}
+              onToggle={() => toggleSection('ventriculoIzquierdo')}
+              isLast={true}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               
               <div>
                 <label htmlFor="diametroTelediastolico" className="block text-sm font-bold mb-2">
@@ -528,18 +533,20 @@ export default function Home() {
 
           {/* Mensajes de estado */}
           {state?.error && (
-            <div className="p-4 text-sm text-red-700 bg-red-50 dark:bg-red-950/30 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-900/50">
+            <div className="p-4 text-sm text-red-700 bg-red-50 dark:bg-red-950/30 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-900/50 mb-6 mt-4">
               {state.error}
             </div>
           )}
 
           {state?.success && (
-            <div className="p-4 text-sm text-green-700 bg-green-50 dark:bg-green-950/30 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-900/50">
+            <div className="p-4 text-sm text-green-700 bg-green-50 dark:bg-green-950/30 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-900/50 mb-6 mt-4">
               {state.message}
             </div>
           )}
 
-          <SubmitButton pending={isPending} />
+          <div className="mt-4">
+            <SubmitButton pending={isPending} />
+          </div>
         </form>
       </main>
     </div>
