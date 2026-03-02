@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState, useEffect, startTransition } from "react";
+import { useActionState, useState, useEffect, startTransition, useRef } from "react";
 import { processReport } from "./actions";
 import { ThemeToggle } from "../components/theme-toggle";
 import { ChevronDown } from "lucide-react";
@@ -21,6 +21,8 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
   // If controlled (isOpen/onToggle provided), use those, otherwise fallback to internal state
   const [internalIsOpen, setInternalIsOpen] = useState(defaultOpen);
   const isActuallyOpen = isOpen !== undefined ? isOpen : internalIsOpen;
+  const sectionRef = useRef(null);
+  const isInitialMount = useRef(true);
   
   const handleToggle = () => {
     if (onToggle) {
@@ -30,23 +32,38 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
     }
   };
 
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    
+    if (isActuallyOpen && sectionRef.current) {
+      // A very small delay just to let the browser register the state change before scrolling
+      setTimeout(() => {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 75);
+    }
+  }, [isActuallyOpen]);
+
   return (
     <div 
       id={id} 
-      className={`group border border-slate-200 dark:border-slate-500 bg-white/30 dark:bg-slate-900/30 ${!isFirst ? '-mt-px' : ''} ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'z-10 relative bg-white/70 dark:bg-slate-900/70' : 'z-0'}`}
+      ref={sectionRef}
+      className={`scroll-mt-8 group border border-slate-200 dark:border-slate-500 bg-white/30 dark:bg-slate-900/30 ${!isFirst ? '-mt-px' : ''} ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'z-10 relative bg-white/70 dark:bg-slate-900/70' : 'z-0'}`}
     >
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
+        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isFirst && isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-200 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
       >
         {title}
         <div className={`p-1.5 rounded-full transition-colors ${isActuallyOpen ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'bg-slate-100 dark:bg-slate-800'}`}>
-          <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isActuallyOpen ? "rotate-180" : ""}`} />
+          <ChevronDown className={`h-5 w-5 transition-transform duration-100 ${isActuallyOpen ? "rotate-180" : ""}`} />
         </div>
       </button>
       <div
-        className={`grid transition-all duration-300 ease-in-out ${
+        className={`grid transition-all duration-100 ease-in-out ${
           isActuallyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
