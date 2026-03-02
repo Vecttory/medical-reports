@@ -51,8 +51,13 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Nombre */}
+        <form onSubmit={handleSubmit} className="space-y-8">
+          
+          {/* SECCIÓN: PACIENTE */}
+          <section className="space-y-6">
+            <h2 className="text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2">Paciente</h2>
+            
+            {/* Nombre */}
           <div>
             <label htmlFor="name" className="block text-sm font-bold mb-2">
               Nombre Del Paciente
@@ -183,6 +188,253 @@ export default function Home() {
               />
             )}
           </div>
+          </section>
+
+          {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
+          <section className="space-y-6">
+            <h2 className="text-xl font-bold border-b border-slate-300 dark:border-slate-700 pb-2">Ventrículo Izquierdo</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <div>
+                <label htmlFor="diametroTelediastolico" className="block text-sm font-bold mb-2">
+                  Diámetro telediastólico
+                </label>
+                <input
+                  type="number"
+                  id="diametroTelediastolico"
+                  name="diametroTelediastolico"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="vdf" className="block text-sm font-bold mb-2">
+                  Volumen Telediastólico (VDF)
+                </label>
+                <input
+                  type="number"
+                  id="vdf"
+                  name="vdf"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="masa" className="block text-sm font-bold mb-2">
+                  Masa
+                </label>
+                <input
+                  type="number"
+                  id="masa"
+                  name="masa"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="sivd" className="block text-sm font-bold mb-2">
+                  SIVd
+                </label>
+                <input
+                  type="number"
+                  id="sivd"
+                  name="sivd"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="divid" className="block text-sm font-bold mb-2">
+                  DIVId
+                </label>
+                <input
+                  type="number"
+                  id="divid"
+                  name="divid"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ppvid" className="block text-sm font-bold mb-2">
+                  PPVId
+                </label>
+                <input
+                  type="number"
+                  id="ppvid"
+                  name="ppvid"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="vsf" className="block text-sm font-bold mb-2">
+                  Volumen Telesistólico (VSF)
+                </label>
+                <input
+                  type="number"
+                  id="vsf"
+                  name="vsf"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ondaE" className="block text-sm font-bold mb-2">
+                  Onda E
+                </label>
+                <input
+                  type="number"
+                  id="ondaE"
+                  name="ondaE"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ondaA" className="block text-sm font-bold mb-2">
+                  Onda A
+                </label>
+                <input
+                  type="number"
+                  id="ondaA"
+                  name="ondaA"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="pendienteDesaceleracion" className="block text-sm font-bold mb-2">
+                  Pendiente de desaceleración
+                </label>
+                <input
+                  type="number"
+                  id="pendienteDesaceleracion"
+                  name="pendienteDesaceleracion"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="triv" className="block text-sm font-bold mb-2">
+                  TRIV
+                </label>
+                <input
+                  type="number"
+                  id="triv"
+                  name="triv"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ondaESeptal" className="block text-sm font-bold mb-2">
+                  Onda e septal
+                </label>
+                <input
+                  type="number"
+                  id="ondaESeptal"
+                  name="ondaESeptal"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ondaELateral" className="block text-sm font-bold mb-2">
+                  Onda e lateral
+                </label>
+                <input
+                  type="number"
+                  id="ondaELateral"
+                  name="ondaELateral"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="diametroTractoSalida" className="block text-sm font-bold mb-2">
+                  Diámetro del tracto de salida
+                </label>
+                <input
+                  type="number"
+                  id="diametroTractoSalida"
+                  name="diametroTractoSalida"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="raizAortica" className="block text-sm font-bold mb-2">
+                  Raíz aórtica
+                </label>
+                <input
+                  type="number"
+                  id="raizAortica"
+                  name="raizAortica"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="diametroUnionSinotubular" className="block text-sm font-bold mb-2">
+                  Diámetro unión sinotubular
+                </label>
+                <input
+                  type="number"
+                  id="diametroUnionSinotubular"
+                  name="diametroUnionSinotubular"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="diametroAortaProximal" className="block text-sm font-bold mb-2">
+                  Diámetro aorta proximal ascendente
+                </label>
+                <input
+                  type="number"
+                  id="diametroAortaProximal"
+                  name="diametroAortaProximal"
+                  step="0.01"
+                  required
+                  className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+            </div>
+          </section>
 
           {/* Mensajes de estado */}
           {state?.error && (
