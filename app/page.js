@@ -67,9 +67,21 @@ export default function Home() {
 
             {/* Peso */}
             <div>
-              <label htmlFor="weight" className="block text-sm font-medium mb-2">
-                Peso (kg)
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="weight" className="block text-sm font-medium">
+                  Peso
+                </label>
+                <div className="flex items-center space-x-3 text-sm">
+                  <label className="flex items-center space-x-1 cursor-pointer">
+                    <input type="radio" name="weightUnit" value="kg" defaultChecked className="text-blue-600 focus:ring-blue-500" />
+                    <span>kg</span>
+                  </label>
+                  <label className="flex items-center space-x-1 cursor-pointer">
+                    <input type="radio" name="weightUnit" value="lbs" className="text-blue-600 focus:ring-blue-500" />
+                    <span>lbs</span>
+                  </label>
+                </div>
+              </div>
               <input
                 type="number"
                 id="weight"

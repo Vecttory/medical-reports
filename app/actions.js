@@ -7,6 +7,7 @@ export async function processReport(prevState, formData) {
     age: formData.get("age"),
     date: formData.get("date"),
     weight: formData.get("weight"),
+    weightUnit: formData.get("weightUnit"),
     height: formData.get("height"),
     reference: formData.get("reference"),
   };
