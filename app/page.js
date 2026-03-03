@@ -146,7 +146,7 @@ export default function Home() {
         <ThemeToggle />
       </div>
 
-      <header className="mb-10 max-w-2xl mx-auto text-center pt-8 sm:pt-0">
+      <header className="mb-8 max-w-2xl mx-auto text-center pt-8 sm:pt-0">
         <h1 className="text-3xl font-bold tracking-tight">Reportes Médicos</h1>
       </header>
 
