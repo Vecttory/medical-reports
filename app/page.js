@@ -387,14 +387,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LVIDD: Left Ventricular Internal Dimension at end diastole (in Spanish: DIVId) */}
-                <label htmlFor="lvidd" className="block text-sm font-bold mb-2">
+                {/* LVIDED: Left Ventricular Internal Dimension at end diastole (in Spanish: DIVId) */}
+                <label htmlFor="lvided" className="block text-sm font-bold mb-2">
                   DIVId (cm)
                 </label>
                 <input
                   type="number"
-                  id="lvidd"
-                  name="lvidd"
+                  id="lvided"
+                  name="lvided"
                   step="0.01"
                   required
                   defaultValue="4.2"
@@ -465,14 +465,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LFDT: Left Ventricular Deceleration Time (in Spanish: Pendiente de desaceleración) */}
-                <label htmlFor="lfdt" className="block text-sm font-bold mb-2">
+                {/* LVFDT: Left Ventricular Deceleration Time (in Spanish: Pendiente de desaceleración) */}
+                <label htmlFor="lvfdt" className="block text-sm font-bold mb-2">
                   Pendiente de desaceleración (mseg)
                 </label>
                 <input
                   type="number"
-                  id="lfdt"
-                  name="lfdt"
+                  id="lvfdt"
+                  name="lvfdt"
                   step="0.01"
                   required
                   defaultValue="192"
@@ -543,14 +543,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LFAR: Left Ventricular Aortic Root (in Spanish: Raíz Aórtica) */}
-                <label htmlFor="lfar" className="block text-sm font-bold mb-2">
+                {/* LVAR: Left Ventricular Aortic Root (in Spanish: Raíz Aórtica) */}
+                <label htmlFor="lvar" className="block text-sm font-bold mb-2">
                   Raíz Aórtica (cm)
                 </label>
                 <input
                   type="number"
-                  id="lfar"
-                  name="lfar"
+                  id="lvar"
+                  name="lvar"
                   step="0.01"
                   required
                   defaultValue="2.99"
@@ -575,14 +575,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LFAAOD: Left Ventricular Ascending Aorta Diameter */}
-                <label htmlFor="lfaaod" className="block text-sm font-bold mb-2">
+                {/* LVAAD: Left Ventricular Ascending Aorta Diameter */}
+                <label htmlFor="lvaad" className="block text-sm font-bold mb-2">
                   Diámetro aorta prox. ascendente (cm)
                 </label>
                 <input
                   type="number"
-                  id="lfaaod"
-                  name="lfaaod"
+                  id="lvaad"
+                  name="lvaad"
                   step="0.01"
                   required
                   defaultValue="2.48"
