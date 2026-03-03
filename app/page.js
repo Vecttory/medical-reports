@@ -55,7 +55,7 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/80 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isFirst && isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-300 dark:border-slate-500 bg-slate-50 dark:bg-slate-800/50' : ''}`}
+        className={`flex justify-between items-center w-full p-4 text-left text-xl font-bold cursor-pointer transition-colors hover:bg-slate-200 dark:hover:bg-slate-800 ${isFirst && !isActuallyOpen ? 'rounded-t-xl' : ''} ${isFirst && isActuallyOpen ? 'rounded-t-xl' : ''} ${isLast && !isActuallyOpen ? 'rounded-b-xl' : ''} ${isActuallyOpen ? 'border-b border-slate-300 dark:border-slate-500 bg-slate-200 dark:bg-slate-800' : ''}`}
       >
         {title}
         <div className={`p-1.5 rounded-full transition-colors ${isActuallyOpen ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'bg-slate-100 dark:bg-slate-800'}`}>
@@ -314,7 +314,7 @@ export default function Home() {
               
               <div>
                 <label htmlFor="diametroTelediastolico" className="block text-sm font-bold mb-2">
-                  Diámetro telediastólico
+                  Diámetro Telediastólico
                 </label>
                 <input
                   type="number"
@@ -328,7 +328,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="vdf" className="block text-sm font-bold mb-2">
-                  Volumen Telediastólico (VDF)
+                  Volumen Telediastólico (VTD)
                 </label>
                 <input
                   type="number"
@@ -398,7 +398,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="vsf" className="block text-sm font-bold mb-2">
-                  Volumen Telesistólico (VSF)
+                  Volumen Telesistólico (VTS)
                 </label>
                 <input
                   type="number"
@@ -468,7 +468,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="ondaESeptal" className="block text-sm font-bold mb-2">
-                  Onda e septal
+                  Onda e Septal
                 </label>
                 <input
                   type="number"
@@ -482,7 +482,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="ondaELateral" className="block text-sm font-bold mb-2">
-                  Onda e lateral
+                  Onda e Lateral
                 </label>
                 <input
                   type="number"
@@ -510,7 +510,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="raizAortica" className="block text-sm font-bold mb-2">
-                  Raíz aórtica
+                  Raíz Aórtica
                 </label>
                 <input
                   type="number"
