@@ -465,14 +465,14 @@ export default function Home() {
               </div>
 
               <div>
-
-                <label htmlFor="decelerationTime" className="block text-sm font-bold mb-2">
+                {/* LFDT: Left Ventricular Deceleration Time (in Spanish: Pendiente de desaceleración) */}
+                <label htmlFor="lfdt" className="block text-sm font-bold mb-2">
                   Pendiente de desaceleración (mseg)
                 </label>
                 <input
                   type="number"
-                  id="decelerationTime"
-                  name="decelerationTime"
+                  id="lfdt"
+                  name="lfdt"
                   step="0.01"
                   required
                   defaultValue="192"
@@ -543,13 +543,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="aorticRoot" className="block text-sm font-bold mb-2">
+                {/* LFAR: Left Ventricular Aortic Root (in Spanish: Raíz Aórtica) */}
+                <label htmlFor="lfar" className="block text-sm font-bold mb-2">
                   Raíz Aórtica (cm)
                 </label>
                 <input
                   type="number"
-                  id="aorticRoot"
-                  name="aorticRoot"
+                  id="lfar"
+                  name="lfar"
                   step="0.01"
                   required
                   defaultValue="2.99"
