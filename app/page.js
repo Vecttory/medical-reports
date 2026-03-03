@@ -322,15 +322,15 @@ export default function Home() {
               isLast={true}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-              
+              {/* LVEDD: Left Ventricular End-Diastolic Diameter (in Spanish: DTDVI) */}
               <div>
-                <label htmlFor="endDiastolicDiameter" className="block text-sm font-bold mb-2">
+                <label htmlFor="lvedd" className="block text-sm font-bold mb-2">
                   Diámetro Telediastólico (cm)
                 </label>
                 <input
                   type="number"
-                  id="endDiastolicDiameter"
-                  name="endDiastolicDiameter"
+                  id="lvedd"
+                  name="lvedd"
                   step="0.01"
                   required
                   defaultValue="4.15"
@@ -339,14 +339,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* EDV: End-Diastolic Volume (in Spanish: VTD) */}
-                <label htmlFor="edv" className="block text-sm font-bold mb-2">
+                {/* LVEDV: Left Ventricular End-Diastolic Volume (in Spanish: VTD) */}
+                <label htmlFor="lvedv" className="block text-sm font-bold mb-2">
                   Volumen Telediastólico (VTD) (ml)
                 </label>
                 <input
                   type="number"
-                  id="edv"
-                  name="edv"
+                  id="lvedv"
+                  name="lvedv"
                   step="0.01"
                   required
                   defaultValue="94.17"
@@ -355,13 +355,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="mass" className="block text-sm font-bold mb-2">
+                {/* LVMASS: Left Ventricular Mass */}
+                <label htmlFor="lvmass" className="block text-sm font-bold mb-2">
                   Masa (gr)
                 </label>
                 <input
                   type="number"
-                  id="mass"
-                  name="mass"
+                  id="lvmass"
+                  name="lvmass"
                   step="0.01"
                   required
                   defaultValue="99.47"
@@ -386,7 +387,7 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LVIDD: Left Ventricular Internal Dimension at Diastole (in Spanish: DIVId) */}
+                {/* LVIDD: Left Ventricular Internal Dimension at end diastole (in Spanish: DIVId) */}
                 <label htmlFor="lvidd" className="block text-sm font-bold mb-2">
                   DIVId (cm)
                 </label>
@@ -418,14 +419,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* ESV: End-Systolic Volume (in Spanish: VTS) */}
-                <label htmlFor="esv" className="block text-sm font-bold mb-2">
+                {/* LVESV: Left Ventricular End-Systolic Volume (in Spanish: VTS) */}
+                <label htmlFor="lvesv" className="block text-sm font-bold mb-2">
                   Volumen Telesistólico (VTS) (ml)
                 </label>
                 <input
                   type="number"
-                  id="esv"
-                  name="esv"
+                  id="lvesv"
+                  name="lvesv"
                   step="0.01"
                   required
                   defaultValue="28.87"
@@ -464,6 +465,7 @@ export default function Home() {
               </div>
 
               <div>
+
                 <label htmlFor="decelerationTime" className="block text-sm font-bold mb-2">
                   Pendiente de desaceleración (mseg)
                 </label>
@@ -479,14 +481,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* IVRT: Isovolumetric Relaxation Time (in Spanish: TRIV) */}
-                <label htmlFor="ivrt" className="block text-sm font-bold mb-2">
+                {/* LFIVRT: Left Ventricular Isovolumetric Relaxation Time (in Spanish: TRIV) */}
+                <label htmlFor="lfivrt" className="block text-sm font-bold mb-2">
                   TRIV (mseg)
                 </label>
                 <input
                   type="number"
-                  id="ivrt"
-                  name="ivrt"
+                  id="lfivrt"
+                  name="lfivrt"
                   step="0.01"
                   required
                   defaultValue="96"
@@ -525,14 +527,14 @@ export default function Home() {
               </div>
 
               <div>
-                {/* LVOT: Left Ventricular Outflow Tract (in Spanish: TSVI) */}
-                <label htmlFor="lvotDiameter" className="block text-sm font-bold mb-2">
+                {/* LVOTD: Left Ventricular Outflow Tract Diameter (in Spanish: DTSVI) */}
+                <label htmlFor="lvotd" className="block text-sm font-bold mb-2">
                   Diámetro del tracto de salida (cm)
                 </label>
                 <input
                   type="number"
-                  id="lvotDiameter"
-                  name="lvotDiameter"
+                  id="lvotd"
+                  name="lvotd"
                   step="0.01"
                   required
                   defaultValue="2.14"
@@ -556,13 +558,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="sinotubularJunction" className="block text-sm font-bold mb-2">
+                {/* LVSTJ: Left Ventricular Sinotubular Junction Diameter */}
+                <label htmlFor="lvstj" className="block text-sm font-bold mb-2">
                   Diámetro unión sinotubular (cm)
                 </label>
                 <input
                   type="number"
-                  id="sinotubularJunction"
-                  name="sinotubularJunction"
+                  id="lvstj"
+                  name="lvstj"
                   step="0.01"
                   required
                   defaultValue="2.27"
@@ -571,13 +574,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="proximalAscendingAorta" className="block text-sm font-bold mb-2">
+                {/* LFAAOD: Left Ventricular Ascending Aorta Diameter */}
+                <label htmlFor="lfaaod" className="block text-sm font-bold mb-2">
                   Diámetro aorta prox. ascendente (cm)
                 </label>
                 <input
                   type="number"
-                  id="proximalAscendingAorta"
-                  name="proximalAscendingAorta"
+                  id="lfaaod"
+                  name="lfaaod"
                   step="0.01"
                   required
                   defaultValue="2.48"
