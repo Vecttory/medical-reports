@@ -322,6 +322,7 @@ export default function Home() {
                   name="diametroTelediastolico"
                   step="0.01"
                   required
+                  defaultValue="4.15"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -336,6 +337,7 @@ export default function Home() {
                   name="vdf"
                   step="0.01"
                   required
+                  defaultValue="94.17"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -350,6 +352,7 @@ export default function Home() {
                   name="masa"
                   step="0.01"
                   required
+                  defaultValue="99.47"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -364,6 +367,7 @@ export default function Home() {
                   name="sivd"
                   step="0.01"
                   required
+                  defaultValue="0.8"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -378,6 +382,7 @@ export default function Home() {
                   name="divid"
                   step="0.01"
                   required
+                  defaultValue="4.2"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -392,6 +397,7 @@ export default function Home() {
                   name="ppvid"
                   step="0.01"
                   required
+                  defaultValue="0.78"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -406,6 +412,7 @@ export default function Home() {
                   name="vsf"
                   step="0.01"
                   required
+                  defaultValue="28.87"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -420,6 +427,7 @@ export default function Home() {
                   name="ondaE"
                   step="0.01"
                   required
+                  defaultValue="48.84"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -434,6 +442,7 @@ export default function Home() {
                   name="ondaA"
                   step="0.01"
                   required
+                  defaultValue="58.82"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -448,6 +457,7 @@ export default function Home() {
                   name="pendienteDesaceleracion"
                   step="0.01"
                   required
+                  defaultValue="192"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -462,6 +472,7 @@ export default function Home() {
                   name="triv"
                   step="0.01"
                   required
+                  defaultValue="96"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -476,6 +487,7 @@ export default function Home() {
                   name="ondaESeptal"
                   step="0.01"
                   required
+                  defaultValue="7.79"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -490,6 +502,7 @@ export default function Home() {
                   name="ondaELateral"
                   step="0.01"
                   required
+                  defaultValue="11.38"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -504,6 +517,7 @@ export default function Home() {
                   name="diametroTractoSalida"
                   step="0.01"
                   required
+                  defaultValue="2.14"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -518,6 +532,7 @@ export default function Home() {
                   name="raizAortica"
                   step="0.01"
                   required
+                  defaultValue="2.99"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -532,6 +547,7 @@ export default function Home() {
                   name="diametroUnionSinotubular"
                   step="0.01"
                   required
+                  defaultValue="2.27"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -546,6 +562,7 @@ export default function Home() {
                   name="diametroAortaProximal"
                   step="0.01"
                   required
+                  defaultValue="2.48"
                   className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
