@@ -141,7 +141,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen p-6 sm:p-12 relative">
-      {/* Botón de tema en la esquina superior derecha */}
+      {/* Theme button in the top right corner */}
       <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
         <ThemeToggle />
       </div>
@@ -153,7 +153,7 @@ export default function Home() {
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
         <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="flex flex-col" autoComplete="off">
 
-          {/* SECCIÓN: PACIENTE */}
+          {/* PATIENT SECTION */}
           <AccordionSection 
             id="patient"
             title="Paciente" 
@@ -163,7 +163,7 @@ export default function Home() {
           >
             <div className="space-y-4">
             
-            {/* Nombre */}
+            {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-bold mb-2">
                 Nombre Del Paciente
@@ -179,7 +179,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-            {/* Edad */}
+            {/* Age */}
             <div>
               <label htmlFor="age" className="block text-sm font-bold mb-2">
                 Edad
@@ -195,7 +195,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Peso */}
+            {/* Weight */}
             <div>
               <div className="flex items-center space-x-4 mb-2">
                 <label htmlFor="weight" className="block text-sm font-bold">
@@ -224,7 +224,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Estatura */}
+            {/* Height */}
             <div>
               <label htmlFor="height" className="block text-sm font-bold mb-2">
                 Estatura (mts)
@@ -241,7 +241,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Fecha */}
+            {/* Date */}
             <div>
               <label htmlFor="date" className="block text-sm font-bold mb-2">
                 Fecha
@@ -257,7 +257,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Referencia */}
+          {/* Reference */}
           <div>
             <div className="flex items-center space-x-4">
               <span className="block text-sm font-bold">
@@ -302,7 +302,7 @@ export default function Home() {
           </div>
           </AccordionSection>
 
-            {/* SECCIÓN: VENTRÍCULO IZQUIERDO */}
+            {/* LEFT VENTRICLE SECTION */}
             <AccordionSection 
               id="ventriculoIzquierdo"
               title="Ventrículo Izquierdo"
@@ -572,7 +572,7 @@ export default function Home() {
             </div>
           </AccordionSection>
 
-          {/* Mensajes de estado */}
+          {/* Status messages */}
           {state?.error && (
             <div className="p-4 text-sm text-red-700 bg-red-50 dark:bg-red-950/30 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-900/50 mb-6 mt-4">
               {state.error}
