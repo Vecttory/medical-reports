@@ -83,8 +83,8 @@ export default function Home() {
   
   // State for accordions
   const [openSections, setOpenSections] = useState({
-    paciente: true,
-    ventriculoIzquierdo: false
+    patient: true,
+    leftVentricle: false
   });
 
   const toggleSection = (section) => {
@@ -155,10 +155,10 @@ export default function Home() {
 
           {/* SECCIÓN: PACIENTE */}
           <AccordionSection 
-            id="paciente"
+            id="patient"
             title="Paciente" 
-            isOpen={openSections.paciente}
-            onToggle={() => toggleSection('paciente')}
+            isOpen={openSections.patient}
+            onToggle={() => toggleSection('patient')}
             isFirst={true}
           >
             <div className="space-y-4">
@@ -418,13 +418,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="ondaE" className="block text-sm font-bold mb-2">
+                <label htmlFor="eWave" className="block text-sm font-bold mb-2">
                   Onda E
                 </label>
                 <input
                   type="number"
-                  id="ondaE"
-                  name="ondaE"
+                  id="eWave"
+                  name="eWave"
                   step="0.01"
                   required
                   defaultValue="48.84"
@@ -433,13 +433,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="ondaA" className="block text-sm font-bold mb-2">
+                <label htmlFor="aWave" className="block text-sm font-bold mb-2">
                   Onda A
                 </label>
                 <input
                   type="number"
-                  id="ondaA"
-                  name="ondaA"
+                  id="aWave"
+                  name="aWave"
                   step="0.01"
                   required
                   defaultValue="58.82"
@@ -448,13 +448,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="pendienteDesaceleracion" className="block text-sm font-bold mb-2">
+                <label htmlFor="decelerationTime" className="block text-sm font-bold mb-2">
                   Pendiente de desaceleración
                 </label>
                 <input
                   type="number"
-                  id="pendienteDesaceleracion"
-                  name="pendienteDesaceleracion"
+                  id="decelerationTime"
+                  name="decelerationTime"
                   step="0.01"
                   required
                   defaultValue="192"
@@ -463,13 +463,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="triv" className="block text-sm font-bold mb-2">
+                {/* IVRT: Isovolumetric Relaxation Time*/}
+                <label htmlFor="ivrt" className="block text-sm font-bold mb-2">
                   TRIV
                 </label>
                 <input
                   type="number"
-                  id="triv"
-                  name="triv"
+                  id="ivrt"
+                  name="ivrt"
                   step="0.01"
                   required
                   defaultValue="96"
@@ -478,13 +479,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="ondaESeptal" className="block text-sm font-bold mb-2">
+                <label htmlFor="ePrimeSeptal" className="block text-sm font-bold mb-2">
                   Onda e Septal
                 </label>
                 <input
                   type="number"
-                  id="ondaESeptal"
-                  name="ondaESeptal"
+                  id="ePrimeSeptal"
+                  name="ePrimeSeptal"
                   step="0.01"
                   required
                   defaultValue="7.79"
@@ -493,13 +494,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="ondaELateral" className="block text-sm font-bold mb-2">
+                <label htmlFor="ePrimeLateral" className="block text-sm font-bold mb-2">
                   Onda e Lateral
                 </label>
                 <input
                   type="number"
-                  id="ondaELateral"
-                  name="ondaELateral"
+                  id="ePrimeLateral"
+                  name="ePrimeLateral"
                   step="0.01"
                   required
                   defaultValue="11.38"
@@ -508,13 +509,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="diametroTractoSalida" className="block text-sm font-bold mb-2">
+                {/* LVOT: Left Ventricular Outflow Tract */}
+                <label htmlFor="lvotDiameter" className="block text-sm font-bold mb-2">
                   Diámetro del tracto de salida
                 </label>
                 <input
                   type="number"
-                  id="diametroTractoSalida"
-                  name="diametroTractoSalida"
+                  id="lvotDiameter"
+                  name="lvotDiameter"
                   step="0.01"
                   required
                   defaultValue="2.14"
@@ -523,13 +525,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="raizAortica" className="block text-sm font-bold mb-2">
+                <label htmlFor="aorticRoot" className="block text-sm font-bold mb-2">
                   Raíz Aórtica
                 </label>
                 <input
                   type="number"
-                  id="raizAortica"
-                  name="raizAortica"
+                  id="aorticRoot"
+                  name="aorticRoot"
                   step="0.01"
                   required
                   defaultValue="2.99"
@@ -538,13 +540,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="diametroUnionSinotubular" className="block text-sm font-bold mb-2">
+                <label htmlFor="sinotubularJunction" className="block text-sm font-bold mb-2">
                   Diámetro unión sinotubular
                 </label>
                 <input
                   type="number"
-                  id="diametroUnionSinotubular"
-                  name="diametroUnionSinotubular"
+                  id="sinotubularJunction"
+                  name="sinotubularJunction"
                   step="0.01"
                   required
                   defaultValue="2.27"
@@ -553,13 +555,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="diametroAortaProximal" className="block text-sm font-bold mb-2">
+                <label htmlFor="proximalAscendingAorta" className="block text-sm font-bold mb-2">
                   Diámetro aorta proximal ascendente
                 </label>
                 <input
                   type="number"
-                  id="diametroAortaProximal"
-                  name="diametroAortaProximal"
+                  id="proximalAscendingAorta"
+                  name="proximalAscendingAorta"
                   step="0.01"
                   required
                   defaultValue="2.48"
