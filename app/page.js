@@ -173,6 +173,7 @@ export default function Home() {
                 id="name"
                 name="name"
                 required
+                defaultValue="Rui Lopéz"
                 className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
           </div>
@@ -189,6 +190,7 @@ export default function Home() {
                 name="age"
                 min="0"
                 required
+                defaultValue="45"
                 className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -217,6 +219,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
+                defaultValue="65"
                 className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -233,6 +236,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
+                defaultValue="1.67"
                 className="w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
