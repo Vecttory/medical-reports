@@ -83,9 +83,20 @@ export default function Home() {
   
   // State for accordions
   const [openSections, setOpenSections] = useState({
-    patient: true,
-    leftVentricle: false
+    patient: false,
+    leftVentricle: true
   });
+
+  // Scroll to the bottom of the page on initial load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth"
+      });
+    }, 150); // slight delay to allow the accordion to render open
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleSection = (section) => {
     setOpenSections(prev => ({
@@ -174,7 +185,7 @@ export default function Home() {
                 name="name"
                 required
                 defaultValue="Rui Lopéz"
-                className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
           </div>
 
@@ -182,7 +193,7 @@ export default function Home() {
             {/* Age */}
             <div>
               <label htmlFor="age" className="block text-sm font-bold mb-2">
-                Edad
+                Edad (años)
               </label>
               <input
                 type="number"
@@ -191,7 +202,7 @@ export default function Home() {
                 min="0"
                 required
                 defaultValue="45"
-                className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
 
@@ -220,7 +231,7 @@ export default function Home() {
                 min="0"
                 required
                 defaultValue="65"
-                className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
 
@@ -237,7 +248,7 @@ export default function Home() {
                 min="0"
                 required
                 defaultValue="1.67"
-                className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
 
@@ -252,7 +263,7 @@ export default function Home() {
                 name="date"
                 required
                 defaultValue={new Date().toISOString().split('T')[0]}
-                className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
           </div>
@@ -295,7 +306,7 @@ export default function Home() {
                 name="reference"
                 aria-label="Detalle de referencia"
                 required
-                className="scroll-mt-12 w-full px-4 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             )}
           </div>
@@ -304,122 +315,127 @@ export default function Home() {
 
             {/* LEFT VENTRICLE SECTION */}
             <AccordionSection 
-              id="ventriculoIzquierdo"
+              id="leftVentricle"
               title="Ventrículo Izquierdo"
-              isOpen={openSections.ventriculoIzquierdo}
-              onToggle={() => toggleSection('ventriculoIzquierdo')}
+              isOpen={openSections.leftVentricle}
+              onToggle={() => toggleSection('leftVentricle')}
               isLast={true}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               
               <div>
-                <label htmlFor="diametroTelediastolico" className="block text-sm font-bold mb-2">
-                  Diámetro Telediastólico
+                <label htmlFor="endDiastolicDiameter" className="block text-sm font-bold mb-2">
+                  Diámetro Telediastólico (cm)
                 </label>
                 <input
                   type="number"
-                  id="diametroTelediastolico"
-                  name="diametroTelediastolico"
+                  id="endDiastolicDiameter"
+                  name="endDiastolicDiameter"
                   step="0.01"
                   required
                   defaultValue="4.15"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="vdf" className="block text-sm font-bold mb-2">
-                  Volumen Telediastólico (VTD)
+                {/* EDV: End-Diastolic Volume (in Spanish: VTD) */}
+                <label htmlFor="edv" className="block text-sm font-bold mb-2">
+                  Volumen Telediastólico (VTD) (ml)
                 </label>
                 <input
                   type="number"
-                  id="vdf"
-                  name="vdf"
+                  id="edv"
+                  name="edv"
                   step="0.01"
                   required
                   defaultValue="94.17"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="masa" className="block text-sm font-bold mb-2">
-                  Masa
+                <label htmlFor="mass" className="block text-sm font-bold mb-2">
+                  Masa (gr)
                 </label>
                 <input
                   type="number"
-                  id="masa"
-                  name="masa"
+                  id="mass"
+                  name="mass"
                   step="0.01"
                   required
                   defaultValue="99.47"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="sivd" className="block text-sm font-bold mb-2">
-                  SIVd
+                {/* IVSD: Interventricular Septal Thickness at Diastole (in Spanish: SIVd) */}
+                <label htmlFor="ivsd" className="block text-sm font-bold mb-2">
+                  SIVd (cm)
                 </label>
                 <input
                   type="number"
-                  id="sivd"
-                  name="sivd"
+                  id="ivsd"
+                  name="ivsd"
                   step="0.01"
                   required
                   defaultValue="0.8"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="divid" className="block text-sm font-bold mb-2">
-                  DIVId
+                {/* LVIDD: Left Ventricular Internal Dimension at Diastole (in Spanish: DIVId) */}
+                <label htmlFor="lvidd" className="block text-sm font-bold mb-2">
+                  DIVId (cm)
                 </label>
                 <input
                   type="number"
-                  id="divid"
-                  name="divid"
+                  id="lvidd"
+                  name="lvidd"
                   step="0.01"
                   required
                   defaultValue="4.2"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="ppvid" className="block text-sm font-bold mb-2">
-                  PPVId
+                {/* LVPWD: Left Ventricular Posterior Wall Thickness at Diastole (in Spanish: PPVId) */}
+                <label htmlFor="lvpwd" className="block text-sm font-bold mb-2">
+                  PPVId (cm)
                 </label>
                 <input
                   type="number"
-                  id="ppvid"
-                  name="ppvid"
+                  id="lvpwd"
+                  name="lvpwd"
                   step="0.01"
                   required
                   defaultValue="0.78"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                <label htmlFor="vsf" className="block text-sm font-bold mb-2">
-                  Volumen Telesistólico (VTS)
+                {/* ESV: End-Systolic Volume (in Spanish: VTS) */}
+                <label htmlFor="esv" className="block text-sm font-bold mb-2">
+                  Volumen Telesistólico (VTS) (ml)
                 </label>
                 <input
                   type="number"
-                  id="vsf"
-                  name="vsf"
+                  id="esv"
+                  name="esv"
                   step="0.01"
                   required
                   defaultValue="28.87"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="eWave" className="block text-sm font-bold mb-2">
-                  Onda E
+                  Onda E (cm/s)
                 </label>
                 <input
                   type="number"
@@ -428,13 +444,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="48.84"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="aWave" className="block text-sm font-bold mb-2">
-                  Onda A
+                  Onda A (cm/s)
                 </label>
                 <input
                   type="number"
@@ -443,13 +459,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="58.82"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="decelerationTime" className="block text-sm font-bold mb-2">
-                  Pendiente de desaceleración
+                  Pendiente de desaceleración (mseg)
                 </label>
                 <input
                   type="number"
@@ -458,14 +474,14 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="192"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                {/* IVRT: Isovolumetric Relaxation Time*/}
+                {/* IVRT: Isovolumetric Relaxation Time (in Spanish: TRIV) */}
                 <label htmlFor="ivrt" className="block text-sm font-bold mb-2">
-                  TRIV
+                  TRIV (mseg)
                 </label>
                 <input
                   type="number"
@@ -474,13 +490,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="96"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="ePrimeSeptal" className="block text-sm font-bold mb-2">
-                  Onda e Septal
+                  Onda e Septal (cm/s)
                 </label>
                 <input
                   type="number"
@@ -489,13 +505,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="7.79"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="ePrimeLateral" className="block text-sm font-bold mb-2">
-                  Onda e Lateral
+                  Onda e Lateral (cm/s)
                 </label>
                 <input
                   type="number"
@@ -504,14 +520,14 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="11.38"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
-                {/* LVOT: Left Ventricular Outflow Tract */}
+                {/* LVOT: Left Ventricular Outflow Tract (in Spanish: TSVI) */}
                 <label htmlFor="lvotDiameter" className="block text-sm font-bold mb-2">
-                  Diámetro del tracto de salida
+                  Diámetro del tracto de salida (cm)
                 </label>
                 <input
                   type="number"
@@ -520,13 +536,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.14"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="aorticRoot" className="block text-sm font-bold mb-2">
-                  Raíz Aórtica
+                  Raíz Aórtica (cm)
                 </label>
                 <input
                   type="number"
@@ -535,13 +551,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.99"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="sinotubularJunction" className="block text-sm font-bold mb-2">
-                  Diámetro unión sinotubular
+                  Diámetro unión sinotubular (cm)
                 </label>
                 <input
                   type="number"
@@ -550,13 +566,13 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.27"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
               <div>
                 <label htmlFor="proximalAscendingAorta" className="block text-sm font-bold mb-2">
-                  Diámetro aorta proximal ascendente
+                  Diámetro aorta prox. ascendente (cm)
                 </label>
                 <input
                   type="number"
@@ -565,7 +581,7 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.48"
-                  className="scroll-mt-12 w-full px-4 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
 
