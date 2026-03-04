@@ -87,7 +87,8 @@ export default function Home() {
     leftVentricle: false,
     rightVentricle: false,
     leftAtrium: false,
-    rightAtrium: true
+    rightAtrium: false,
+    mitralValve: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -797,7 +798,6 @@ export default function Home() {
             title="Aurícula Derecha"
             isOpen={openSections.rightAtrium}
             onToggle={() => toggleSection('rightAtrium')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -828,6 +828,81 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="42.19"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+            </div>
+          </AccordionSection>
+
+          {/* MITRAL VALVE SECTION */}
+          <AccordionSection
+            id="mitralValve"
+            title="Válvula Mitral"
+            isOpen={openSections.mitralValve}
+            onToggle={() => toggleSection('mitralValve')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* MVVTI: Mitral Valve Velocity Time Integral */}
+                <label htmlFor="mvvti" className="block text-sm font-bold mb-2">
+                  IVT VM (cm)
+                </label>
+                <input
+                  type="number"
+                  id="mvvti"
+                  name="mvvti"
+                  step="0.01"
+                  required
+                  defaultValue="21.26"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* MVVMAX: Mitral Valve Maximum Velocity */}
+                <label htmlFor="mvvmax" className="block text-sm font-bold mb-2">
+                  Vmax VM (cm/s)
+                </label>
+                <input
+                  type="number"
+                  id="mvvmax"
+                  name="mvvmax"
+                  step="0.01"
+                  required
+                  defaultValue="71.31"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* MVMG: Mitral Valve Mean Gradient */}
+                <label htmlFor="mvmg" className="block text-sm font-bold mb-2">
+                  Grad Med VM (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="mvmg"
+                  name="mvmg"
+                  step="0.01"
+                  required
+                  defaultValue="0.81"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* MVA: Mitral Valve Area */}
+                <label htmlFor="mva" className="block text-sm font-bold mb-2">
+                  AVM (cm²)
+                </label>
+                <input
+                  type="number"
+                  id="mva"
+                  name="mva"
+                  step="0.01"
+                  required
+                  defaultValue="3.26"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
