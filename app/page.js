@@ -89,7 +89,8 @@ export default function Home() {
     leftAtrium: false,
     rightAtrium: false,
     mitralValve: false,
-    aorticValve: true
+    aorticValve: false,
+    pulmonaryValve: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -915,7 +916,6 @@ export default function Home() {
             title="Válvula Aórtica"
             isOpen={openSections.aorticValve}
             onToggle={() => toggleSection('aorticValve')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -1010,6 +1010,81 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.46"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+            </div>
+          </AccordionSection>
+
+          {/* PULMONARY VALVE SECTION */}
+          <AccordionSection
+            id="pulmonaryValve"
+            title="Válvula pulmonar"
+            isOpen={openSections.pulmonaryValve}
+            onToggle={() => toggleSection('pulmonaryValve')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* PVVMAX: Pulmonary Valve Maximum Velocity */}
+                <label htmlFor="pvvmax" className="block text-sm font-bold mb-2">
+                  Vmax VP (cm/s)
+                </label>
+                <input
+                  type="number"
+                  id="pvvmax"
+                  name="pvvmax"
+                  step="0.01"
+                  required
+                  defaultValue="88.42"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* RVOTVTI: Right Ventricular Outflow Tract Velocity Time Integral */}
+                <label htmlFor="rvotvti" className="block text-sm font-bold mb-2">
+                  IVT TSVD (cm)
+                </label>
+                <input
+                  type="number"
+                  id="rvotvti"
+                  name="rvotvti"
+                  step="0.01"
+                  required
+                  defaultValue="13.86"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* PVAT: Pulmonary Valve Acceleration Time or (RVOT AT) Right Ventricular Outflow Tract Acceleration Time )*/}
+                <label htmlFor="pvat" className="block text-sm font-bold mb-2">
+                  Tiempo de aceleración VP (mseg)
+                </label>
+                <input
+                  type="number"
+                  id="pvat"
+                  name="pvat"
+                  step="1"
+                  required
+                  defaultValue="172"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* PVD: Pulmonary Valve Diameter */}
+                <label htmlFor="pvd" className="block text-sm font-bold mb-2">
+                  Diámetro (cm)
+                </label>
+                <input
+                  type="number"
+                  id="pvd"
+                  name="pvd"
+                  step="0.01"
+                  required
+                  defaultValue="2.02"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
