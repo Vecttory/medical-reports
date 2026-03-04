@@ -84,7 +84,8 @@ export default function Home() {
   // State for accordions
   const [openSections, setOpenSections] = useState({
     patient: false,
-    leftVentricle: true
+    leftVentricle: false,
+    rightVentricle: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -319,7 +320,6 @@ export default function Home() {
               title="Ventrículo Izquierdo"
               isOpen={openSections.leftVentricle}
               onToggle={() => toggleSection('leftVentricle')}
-              isLast={true}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               {/* LVEDD: Left Ventricular End-Diastolic Diameter (in Spanish: DTDVI) */}
@@ -473,7 +473,7 @@ export default function Home() {
                   type="number"
                   id="lvfdt"
                   name="lvfdt"
-                  step="0.01"
+                  step="1"
                   required
                   defaultValue="192"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -489,7 +489,7 @@ export default function Home() {
                   type="number"
                   id="lfivrt"
                   name="lfivrt"
-                  step="0.01"
+                  step="1"
                   required
                   defaultValue="96"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -586,6 +586,138 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="2.48"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+            </div>
+          </AccordionSection>
+
+          {/* RIGHT VENTRICLE SECTION */}
+          <AccordionSection
+            id="rightVentricle"
+            title="Ventrículo Derecho"
+            isOpen={openSections.rightVentricle}
+            onToggle={() => toggleSection('rightVentricle')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                <label htmlFor="rvBasalDiameter" className="block text-sm font-bold mb-2">
+                  Diámetro Basal (cm)
+                </label>
+                <input
+                  type="number"
+                  id="rvBasalDiameter"
+                  name="rvBasalDiameter"
+                  step="0.01"
+                  required
+                  defaultValue="3.88"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rvMidDiameter" className="block text-sm font-bold mb-2">
+                  Diámetro Medio (cm)
+                </label>
+                <input
+                  type="number"
+                  id="rvMidDiameter"
+                  name="rvMidDiameter"
+                  step="0.01"
+                  required
+                  defaultValue="2.97"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rvLongitudinalDiameter" className="block text-sm font-bold mb-2">
+                  Diámetro Longitudinal (cm)
+                </label>
+                <input
+                  type="number"
+                  id="rvLongitudinalDiameter"
+                  name="rvLongitudinalDiameter"
+                  step="0.01"
+                  required
+                  defaultValue="7.15"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rvSWave" className="block text-sm font-bold mb-2">
+                  Onda S Tricuspídea (cm/s)
+                </label>
+                <input
+                  type="number"
+                  id="rvSWave"
+                  name="rvSWave"
+                  step="0.01"
+                  required
+                  defaultValue="13.18"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="tapse" className="block text-sm font-bold mb-2">
+                  TAPSE (mm)
+                </label>
+                <input
+                  type="number"
+                  id="tapse"
+                  name="tapse"
+                  step="1"
+                  required
+                  defaultValue="22"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rveda" className="block text-sm font-bold mb-2">
+                  Área Telediastólica VD
+                </label>
+                <input
+                  type="number"
+                  id="rveda"
+                  name="rveda"
+                  step="0.01"
+                  required
+                  defaultValue="17.15"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rvesa" className="block text-sm font-bold mb-2">
+                  Área Telesistólica VD
+                </label>
+                <input
+                  type="number"
+                  id="rvesa"
+                  name="rvesa"
+                  step="0.01"
+                  required
+                  defaultValue="10.18"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="rvFreeWallDiameter" className="block text-sm font-bold mb-2">
+                  Diámetro pared libre VD (mm)
+                </label>
+                <input
+                  type="number"
+                  id="rvFreeWallDiameter"
+                  name="rvFreeWallDiameter"
+                  step="1"
+                  required
+                  defaultValue="4"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
