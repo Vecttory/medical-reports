@@ -197,7 +197,7 @@ export async function processReport(prevState, formData) {
 
       // Right Atrium Data
       raa: truncateDecimals(raa),
-      // rav: truncateDecimals(rav), not used in the template
+      // rav: truncateDecimals(rav), not used in the template 
       irav: truncateDecimals(irav),
     });
 
