@@ -86,7 +86,8 @@ export default function Home() {
     patient: false,
     leftVentricle: false,
     rightVentricle: false,
-    leftAtrium: true
+    leftAtrium: false,
+    rightAtrium: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -754,7 +755,6 @@ export default function Home() {
             title="Aurícula Izquierda"
             isOpen={openSections.leftAtrium}
             onToggle={() => toggleSection('leftAtrium')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -785,6 +785,49 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="43.84"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+            </div>
+          </AccordionSection>
+
+          {/* RIGHT ATRIUM SECTION */}
+          <AccordionSection
+            id="rightAtrium"
+            title="Aurícula Derecha"
+            isOpen={openSections.rightAtrium}
+            onToggle={() => toggleSection('rightAtrium')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* RAA: Right Atrial Area */}
+                <label htmlFor="raa" className="block text-sm font-bold mb-2">
+                  Área aurícula derecha (cm²)
+                </label>
+                <input
+                  type="number"
+                  id="raa"
+                  name="raa"
+                  step="0.01"
+                  required
+                  defaultValue="15.62"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* RAV: Right Atrial Volume */}
+                <label htmlFor="rav" className="block text-sm font-bold mb-2">
+                  Volumen aurícula derecha (ml)
+                </label>
+                <input
+                  type="number"
+                  id="rav"
+                  name="rav"
+                  step="0.01"
+                  required
+                  defaultValue="42.19"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
