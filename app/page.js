@@ -85,7 +85,8 @@ export default function Home() {
   const [openSections, setOpenSections] = useState({
     patient: false,
     leftVentricle: false,
-    rightVentricle: true
+    rightVentricle: false,
+    leftAtrium: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -615,7 +616,6 @@ export default function Home() {
             title="Ventrículo Derecho"
             isOpen={openSections.rightVentricle}
             onToggle={() => toggleSection('rightVentricle')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -745,6 +745,49 @@ export default function Home() {
                 />
               </div>
 
+            </div>
+          </AccordionSection>
+
+          {/* LEFT ATRIUM SECTION */}
+          <AccordionSection
+            id="leftAtrium"
+            title="Aurícula Izquierda"
+            isOpen={openSections.leftAtrium}
+            onToggle={() => toggleSection('leftAtrium')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* LAAPD: Left Atrial Anteroposterior Diameter */}
+                <label htmlFor="laapd" className="block text-sm font-bold mb-2">
+                  Diámetro Anteroposterior (cm)
+                </label>
+                <input
+                  type="number"
+                  id="laapd"
+                  name="laapd"
+                  step="0.01"
+                  required
+                  defaultValue="3.63"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* LAV: Left Atrial Volume */}
+                <label htmlFor="lav" className="block text-sm font-bold mb-2">
+                  Volumen aurícula izquierda (ml)
+                </label>
+                <input
+                  type="number"
+                  id="lav"
+                  name="lav"
+                  step="0.01"
+                  required
+                  defaultValue="43.84"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
             </div>
           </AccordionSection>
 

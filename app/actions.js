@@ -49,6 +49,11 @@ export async function processReport(prevState, formData) {
     rvfwt: parseFloat(formData.get("rvfwt") || "0"),
   };
 
+  const leftAtriumData = {
+    laapd: parseFloat(formData.get("laapd") || "0"),
+    lav: parseFloat(formData.get("lav") || "0"),
+  };
+
   // Basic validation (even though HTML5 handles most of it)
   if (!patientData.name || !patientData.age || !patientData.date || !patientData.weight || !patientData.height) {
     return { error: "Faltan campos requeridos." };
@@ -105,6 +110,10 @@ export async function processReport(prevState, formData) {
     } = rightVentricleData;
 
     const rvfac = rveda !== 0 ? ((rveda - rvesa) / rveda) * 100 : 0;
+
+    // Left Atrium Calculations
+    const { laapd, lav } = leftAtriumData;
+    const ilav = lav / bsa;
 
     // Format date to DD/MM/YYYY
     const [year, month, day] = patientData.date.split("-");
@@ -171,6 +180,11 @@ export async function processReport(prevState, formData) {
       rvesa: truncateDecimals(rvesa),
       rvfac: truncateDecimals(rvfac),
       rvfwt: truncateDecimals(rvfwt, 0),
+
+      // Left Atrium Data
+      laapd: truncateDecimals(laapd),
+      // lav: truncateDecimals(lav), not used in the template
+      ilav: truncateDecimals(ilav),
     });
 
     const buf = doc.getZip().generate({
