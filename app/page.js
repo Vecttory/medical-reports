@@ -177,7 +177,7 @@ export default function Home() {
       </div>
 
       <header className="mb-8 max-w-2xl mx-auto text-center pt-8 sm:pt-0">
-        <h1 className="text-3xl font-bold tracking-tight">Reportes Médicos</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Informe De Ecocardiograma Transtorácico</h1>
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
