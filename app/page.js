@@ -111,6 +111,17 @@ export default function Home() {
     // We do NOT call e.preventDefault() here so the browser can show its native tooltip.
     
     const form = e.currentTarget;
+    const target = e.target;
+    
+    // Set custom Spanish validation message
+    if (target.validity.valueMissing) {
+      target.setCustomValidity('Por favor, completa este campo.');
+    } else if (target.validity.typeMismatch || target.validity.badInput || target.validity.stepMismatch) {
+      target.setCustomValidity('Por favor, introduce un valor válido.');
+    } else {
+      target.setCustomValidity('Valor no válido.');
+    }
+
     // Find ALL invalid elements currently on the form
     const invalidElements = form.querySelectorAll(':invalid');
     if (invalidElements.length === 0) return;
@@ -120,7 +131,7 @@ export default function Home() {
     
     // If the event target isn't the first invalid element, ignore it.
     // This prevents the event from firing and opening multiple sections for subsequent invalid fields.
-    if (e.target !== firstInvalid) return;
+    if (target !== firstInvalid) return;
 
     const sectionId = firstInvalid.closest('.group')?.id;
     
@@ -130,6 +141,11 @@ export default function Home() {
         [sectionId]: true
       }));
     }
+  };
+
+  const handleInput = (e) => {
+    // Clear the custom validity when the user starts typing so it can be re-evaluated
+    e.target.setCustomValidity('');
   };
 
   const handleSubmit = (e) => {
@@ -163,7 +179,7 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} onInvalid={handleInvalid} className="flex flex-col" autoComplete="off">
+        <form onSubmit={handleSubmit} onInvalid={handleInvalid} onInput={handleInput} className="flex flex-col" autoComplete="off">
 
           {/* PATIENT SECTION */}
           <AccordionSection 
