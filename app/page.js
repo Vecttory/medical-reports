@@ -90,7 +90,8 @@ export default function Home() {
     rightAtrium: false,
     mitralValve: false,
     aorticValve: false,
-    pulmonaryValve: true
+    pulmonaryValve: false,
+    tricuspidValve: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -151,6 +152,11 @@ export default function Home() {
   const handleInput = (e) => {
     // Clear the custom validity when the user starts typing so it can be re-evaluated
     e.target.setCustomValidity('');
+    if (e.target.type === 'radio') {
+      const form = e.currentTarget;
+      const radios = form.querySelectorAll(`input[name="${e.target.name}"]`);
+      radios.forEach(r => r.setCustomValidity(''));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -184,7 +190,7 @@ export default function Home() {
       </header>
 
       <main className="max-w-2xl mx-auto bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border-1 border-slate-300 dark:border-slate-500">
-        <form onSubmit={handleSubmit} onInvalid={handleInvalid} onInput={handleInput} className="flex flex-col" autoComplete="off">
+        <form onSubmit={handleSubmit} onInvalid={handleInvalid} onChange={handleInput} className="flex flex-col" autoComplete="off">
 
           {/* PATIENT SECTION */}
           <AccordionSection 
@@ -332,6 +338,7 @@ export default function Home() {
               />
             )}
           </div>
+
           </div>
           </AccordionSection>
 
@@ -1022,7 +1029,6 @@ export default function Home() {
             title="Válvula pulmonar"
             isOpen={openSections.pulmonaryValve}
             onToggle={() => toggleSection('pulmonaryValve')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -1087,6 +1093,128 @@ export default function Home() {
                   defaultValue="2.02"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+            </div>
+          </AccordionSection>
+
+          {/* TRICUSPID VALVE SECTION */}
+          <AccordionSection
+            id="tricuspidValve"
+            title="Válvula Tricúspide"
+            isOpen={openSections.tricuspidValve}
+            onToggle={() => toggleSection('tricuspidValve')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* TRVMAX: Tricuspid Regurgitation Maximum Velocity */}
+                <label htmlFor="trvmax" className="block text-sm font-bold mb-2">
+                  Vmax IT (cm/s)
+                </label>
+                <input
+                  type="number"
+                  id="trvmax"
+                  name="trvmax"
+                  step="0.01"
+                  required
+                  defaultValue="222.32"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* TR MAX GRAD: Tricuspid Regurgitation Maximum Gradient */}
+                <label htmlFor="trMaxGrad" className="block text-sm font-bold mb-2">
+                  Gradiente Máximo IT (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="trMaxGrad"
+                  name="trMaxGrad"
+                  step="0.01"
+                  required
+                  defaultValue="20.5"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* IVC MAX DIAM: IVC Maximum Diameter */}
+                <label htmlFor="ivcMaxDiam" className="block text-sm font-bold mb-2">
+                  Diámetro Máximo (cm)
+                </label>
+                <input
+                  type="number"
+                  id="ivcMaxDiam"
+                  name="ivcMaxDiam"
+                  step="0.01"
+                  required
+                  defaultValue="1.72"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* IVC MIN DIAM: IVC Minimum Diameter */}
+                <label htmlFor="ivcMinDiam" className="block text-sm font-bold mb-2">
+                  Díametro Mínimo (cm)
+                </label>
+                <input
+                  type="number"
+                  id="ivcMinDiam"
+                  name="ivcMinDiam"
+                  step="0.01"
+                  required
+                  defaultValue="1.00"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* PSAP: Pulmonary Systolic Arterial Pressure */}
+                <label htmlFor="psap" className="block text-sm font-bold mb-2">
+                  PSAP (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="psap"
+                  name="psap"
+                  step="0.01"
+                  required
+                  defaultValue="24"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              {/* Inspiratory Collapse */}
+              <div className="sm:col-span-2 w-full">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Colapso Inspiratorio Observado:
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="inspiratoryCollapse" 
+                        value="mayor" 
+                        required
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Mayor</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="inspiratoryCollapse" 
+                        value="menor" 
+                        required
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Menor</span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </AccordionSection>
