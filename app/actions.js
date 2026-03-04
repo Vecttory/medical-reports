@@ -38,6 +38,17 @@ export async function processReport(prevState, formData) {
     lvaad: parseFloat(formData.get("lvaad") || "0"),
   };
 
+  const rightVentricleData = {
+    rvbd: parseFloat(formData.get("rvbd") || "0"),
+    rvmd: parseFloat(formData.get("rvmd") || "0"),
+    rvld: parseFloat(formData.get("rvld") || "0"),
+    sWave: parseFloat(formData.get("sWave") || "0"),
+    rvtapse: parseFloat(formData.get("rvtapse") || "0"),
+    rveda: parseFloat(formData.get("rveda") || "0"),
+    rvesa: parseFloat(formData.get("rvesa") || "0"),
+    rvfwt: parseFloat(formData.get("rvfwt") || "0"),
+  };
+
   // Basic validation (even though HTML5 handles most of it)
   if (!patientData.name || !patientData.age || !patientData.date || !patientData.weight || !patientData.height) {
     return { error: "Faltan campos requeridos." };
@@ -86,6 +97,14 @@ export async function processReport(prevState, formData) {
     const eRatio = ePrimeAvg !== 0 ? eWave / ePrimeAvg : 0;
     const ilvar = lvar / bsa;
     const ilvaad = lvaad / bsa;
+
+    // Right Ventricle Calculations
+    const {
+      rvbd, rvmd, rvld,
+      sWave, rvtapse, rveda, rvesa, rvfwt
+    } = rightVentricleData;
+
+    const rvfac = rveda !== 0 ? ((rveda - rvesa) / rveda) * 100 : 0;
 
     // Format date to DD/MM/YYYY
     const [year, month, day] = patientData.date.split("-");
@@ -141,6 +160,17 @@ export async function processReport(prevState, formData) {
       lvstj: truncateDecimals(lvstj),
       lvaad: truncateDecimals(lvaad),
       ilvaad: truncateDecimals(ilvaad),
+
+      // Right Ventricle Data
+      rvbd: truncateDecimals(rvbd),
+      rvmd: truncateDecimals(rvmd),
+      rvld: truncateDecimals(rvld),
+      sWave: truncateDecimals(sWave),
+      rvtapse: truncateDecimals(rvtapse, 0),
+      rveda: truncateDecimals(rveda),
+      rvesa: truncateDecimals(rvesa),
+      rvfac: truncateDecimals(rvfac),
+      rvfwt: truncateDecimals(rvfwt, 0),
     });
 
     const buf = doc.getZip().generate({
