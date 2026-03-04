@@ -66,6 +66,15 @@ export async function processReport(prevState, formData) {
     mva: parseFloat(formData.get("mva") || "0"),
   };
 
+  const aorticValveData = {
+    avvti: parseFloat(formData.get("avvti") || "0"),
+    lvotvti: parseFloat(formData.get("lvotvti") || "0"),
+    avMaxGrad: parseFloat(formData.get("avMaxGrad") || "0"),
+    avMeanGrad: parseFloat(formData.get("avMeanGrad") || "0"),
+    avvmax: parseFloat(formData.get("avvmax") || "0"),
+    avao: parseFloat(formData.get("avao") || "0"),
+  };
+
   // Basic validation (even though HTML5 handles most of it)
   if (!patientData.name || !patientData.age || !patientData.date || !patientData.weight || !patientData.height) {
     return { error: "Faltan campos requeridos." };
@@ -133,6 +142,10 @@ export async function processReport(prevState, formData) {
 
     // Mitral Valve Calculations
     const { mvvti, mvvmax, mvmg, mva } = mitralValveData;
+
+    // Aortic Valve Calculations
+    const { avvti, lvotvti, avMaxGrad, avMeanGrad, avvmax, avao } = aorticValveData;
+    const iavao = avao / bsa;
 
     // Format date to DD/MM/YYYY
     const [year, month, day] = patientData.date.split("-");
@@ -215,6 +228,15 @@ export async function processReport(prevState, formData) {
       mvvmax: truncateDecimals(mvvmax),
       mvmg: truncateDecimals(mvmg),
       mva: truncateDecimals(mva),
+
+      // Aortic Valve Data
+      avvti: truncateDecimals(avvti),
+      lvotvti: truncateDecimals(lvotvti),
+      avMaxGrad: truncateDecimals(avMaxGrad),
+      avMeanGrad: truncateDecimals(avMeanGrad),
+      avvmax: truncateDecimals(avvmax),
+      avao: truncateDecimals(avao),
+      iavao: truncateDecimals(iavao),
     });
 
     const buf = doc.getZip().generate({

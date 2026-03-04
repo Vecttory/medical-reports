@@ -88,7 +88,8 @@ export default function Home() {
     rightVentricle: false,
     leftAtrium: false,
     rightAtrium: false,
-    mitralValve: true
+    mitralValve: false,
+    aorticValve: true
   });
 
   // Scroll to the bottom of the page on initial load
@@ -840,7 +841,6 @@ export default function Home() {
             title="Válvula Mitral"
             isOpen={openSections.mitralValve}
             onToggle={() => toggleSection('mitralValve')}
-            isLast={true}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
@@ -903,6 +903,113 @@ export default function Home() {
                   step="0.01"
                   required
                   defaultValue="3.26"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+            </div>
+          </AccordionSection>
+
+          {/* AORTIC VALVE SECTION */}
+          <AccordionSection
+            id="aorticValve"
+            title="Válvula Aórtica"
+            isOpen={openSections.aorticValve}
+            onToggle={() => toggleSection('aorticValve')}
+            isLast={true}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                {/* AVVTI: Aortic Valve Velocity Time Integral */}
+                <label htmlFor="avvti" className="block text-sm font-bold mb-2">
+                  IVT VA (cm)
+                </label>
+                <input
+                  type="number"
+                  id="avvti"
+                  name="avvti"
+                  step="0.01"
+                  required
+                  defaultValue="26.29"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* LVOTVTI: Left Ventricular Outflow Tract Velocity Time Integral */}
+                <label htmlFor="lvotvti" className="block text-sm font-bold mb-2">
+                  IVT TSVI (cm)
+                </label>
+                <input
+                  type="number"
+                  id="lvotvti"
+                  name="lvotvti"
+                  step="0.01"
+                  required
+                  defaultValue="18.02"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* AV MAX GRAD: Aortic Valve Maximum Gradient */}
+                <label htmlFor="avMaxGrad" className="block text-sm font-bold mb-2">
+                  Grad Max (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="avMaxGrad"
+                  name="avMaxGrad"
+                  step="0.01"
+                  required
+                  defaultValue="7.98"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* AV MEAN GRAD: Aortic Valve Mean Gradient */}
+                <label htmlFor="avMeanGrad" className="block text-sm font-bold mb-2">
+                  Gradiente medio (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="avMeanGrad"
+                  name="avMeanGrad"
+                  step="0.01"
+                  required
+                  defaultValue="3.62"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* AVVMAX: Aortic Valve Maximum Velocity */}
+                <label htmlFor="avvmax" className="block text-sm font-bold mb-2">
+                  Velocidad Máxima (cm/s)
+                </label>
+                <input
+                  type="number"
+                  id="avvmax"
+                  name="avvmax"
+                  step="0.01"
+                  required
+                  defaultValue="141.18"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
+
+              <div>
+                {/* AVAO: Aortic Valve Area */}
+                <label htmlFor="avao" className="block text-sm font-bold mb-2">
+                  Área valvular aórtica (AVAo) (cm²)
+                </label>
+                <input
+                  type="number"
+                  id="avao"
+                  name="avao"
+                  step="0.01"
+                  required
+                  defaultValue="2.46"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
