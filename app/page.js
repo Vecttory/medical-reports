@@ -619,13 +619,14 @@ export default function Home() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <div>
-                <label htmlFor="rvBasalDiameter" className="block text-sm font-bold mb-2">
+                {/* RVBD: Right Ventricular Basal Diameter */}
+                <label htmlFor="rvbd" className="block text-sm font-bold mb-2">
                   Diámetro Basal (cm)
                 </label>
                 <input
                   type="number"
-                  id="rvBasalDiameter"
-                  name="rvBasalDiameter"
+                  id="rvbd"
+                  name="rvbd"
                   step="0.01"
                   required
                   defaultValue="3.88"
@@ -634,13 +635,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="rvMidDiameter" className="block text-sm font-bold mb-2">
+                {/* RVMD: Right Ventricular Mid Diameter */}
+                <label htmlFor="rvmd" className="block text-sm font-bold mb-2">
                   Diámetro Medio (cm)
                 </label>
                 <input
                   type="number"
-                  id="rvMidDiameter"
-                  name="rvMidDiameter"
+                  id="rvmd"
+                  name="rvmd"
                   step="0.01"
                   required
                   defaultValue="2.97"
@@ -649,13 +651,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="rvLongitudinalDiameter" className="block text-sm font-bold mb-2">
+                {/* RVLD: Right Ventricular Longitudinal Diameter */}
+                <label htmlFor="rvld" className="block text-sm font-bold mb-2">
                   Diámetro Longitudinal (cm)
                 </label>
                 <input
                   type="number"
-                  id="rvLongitudinalDiameter"
-                  name="rvLongitudinalDiameter"
+                  id="rvld"
+                  name="rvld"
                   step="0.01"
                   required
                   defaultValue="7.15"
@@ -664,13 +667,13 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="rvSWave" className="block text-sm font-bold mb-2">
+                <label htmlFor="sWave" className="block text-sm font-bold mb-2">
                   Onda S Tricuspídea (cm/s)
                 </label>
                 <input
                   type="number"
-                  id="rvSWave"
-                  name="rvSWave"
+                  id="sWave"
+                  name="sWave"
                   step="0.01"
                   required
                   defaultValue="13.18"
@@ -679,13 +682,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="tapse" className="block text-sm font-bold mb-2">
+                {/* RVTAPSE: Right Ventricular TAPSE */}
+                <label htmlFor="rvtapse" className="block text-sm font-bold mb-2">
                   TAPSE (mm)
                 </label>
                 <input
                   type="number"
-                  id="tapse"
-                  name="tapse"
+                  id="rvtapse"
+                  name="rvtapse"
                   step="1"
                   required
                   defaultValue="22"
@@ -694,8 +698,9 @@ export default function Home() {
               </div>
 
               <div>
+                {/* RVEDA: Right Ventricular End-Diastolic Area */}
                 <label htmlFor="rveda" className="block text-sm font-bold mb-2">
-                  Área Telediastólica VD
+                  Área Telediastólica VD (cm²)
                 </label>
                 <input
                   type="number"
@@ -709,8 +714,9 @@ export default function Home() {
               </div>
 
               <div>
+                {/* RVESA: Right Ventricular End-Systolic Area */}
                 <label htmlFor="rvesa" className="block text-sm font-bold mb-2">
-                  Área Telesistólica VD
+                  Área Telesistólica VD (cm²)
                 </label>
                 <input
                   type="number"
@@ -724,13 +730,14 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="rvFreeWallDiameter" className="block text-sm font-bold mb-2">
+                {/* RVFWT: Right Ventricular Free Wall Thickness */}
+                <label htmlFor="rvfwt" className="block text-sm font-bold mb-2">
                   Diámetro pared libre VD (mm)
                 </label>
                 <input
                   type="number"
-                  id="rvFreeWallDiameter"
-                  name="rvFreeWallDiameter"
+                  id="rvfwt"
+                  name="rvfwt"
                   step="1"
                   required
                   defaultValue="4"
