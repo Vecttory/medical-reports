@@ -501,7 +501,7 @@ export default function Home() {
                   type="number"
                   id="lvfdt"
                   name="lvfdt"
-                  step="1"
+                  step="0.01"
                   required
                   defaultValue="192"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -517,7 +517,7 @@ export default function Home() {
                   type="number"
                   id="lfivrt"
                   name="lfivrt"
-                  step="1"
+                  step="0.01"
                   required
                   defaultValue="96"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -701,7 +701,7 @@ export default function Home() {
                   type="number"
                   id="rvtapse"
                   name="rvtapse"
-                  step="1"
+                  step="0.01"
                   required
                   defaultValue="22"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -749,7 +749,7 @@ export default function Home() {
                   type="number"
                   id="rvfwt"
                   name="rvfwt"
-                  step="1"
+                  step="0.01"
                   required
                   defaultValue="4"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -1088,7 +1088,7 @@ export default function Home() {
                   type="number"
                   id="pvat"
                   name="pvat"
-                  step="1"
+                  step="0.01"
                   required
                   defaultValue="172"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
