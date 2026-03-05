@@ -840,6 +840,22 @@ export default function Home() {
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
+
+              <div>
+                {/* RAP: Right Atrial Pressure */}
+                <label htmlFor="rap" className="block text-sm font-bold mb-2">
+                  Presión aurícula derecha (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="rap"
+                  name="rap"
+                  step="0.01"
+                  required
+                  defaultValue="4.00"
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
+              </div>
             </div>
           </AccordionSection>
 

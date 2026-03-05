@@ -57,6 +57,7 @@ export async function processReport(prevState, formData) {
   const rightAtriumData = {
     raa: parseFloat(formData.get("raa") || "0"),
     rav: parseFloat(formData.get("rav") || "0"),
+    rap: parseFloat(formData.get("rap") || "0"),
   };
 
   const mitralValveData = {
@@ -153,7 +154,7 @@ export async function processReport(prevState, formData) {
     const ilav = lav / bsa;
 
     // Right Atrium Calculations
-    const { raa, rav } = rightAtriumData;
+    const { raa, rav, rap } = rightAtriumData;
     const irav = rav / bsa;
 
     // Mitral Valve Calculations
@@ -169,6 +170,9 @@ export async function processReport(prevState, formData) {
     // Tricuspid Valve Calculations
     const { trvmax, trMaxGrad, ivcMaxDiam, ivcMinDiam, psap, ivcicM } = tricuspidValveData;
     const ivcci = ivcMaxDiam !== 0 ? ((ivcMaxDiam - ivcMinDiam) / ivcMaxDiam) * 100 : 0;
+    
+    // Conclusions Calculations
+    const pasp = rap + trMaxGrad;
 
     // Format date to DD/MM/YYYY
     const [year, month, day] = patientData.date.split("-");
@@ -275,6 +279,11 @@ export async function processReport(prevState, formData) {
       psap: truncateDecimals(psap),
       ivcicM: ivcicM,
       ivcci: truncateDecimals(ivcci, 0),
+
+      // Conclusions (no decimals values)
+      lvefInt: truncateDecimals(lvef, 0),
+      rvfacInt: truncateDecimals(rvfac, 0),
+      pasp: truncateDecimals(pasp, 0),
     });
 
     const buf = doc.getZip().generate({
