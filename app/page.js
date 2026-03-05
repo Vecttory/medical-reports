@@ -179,7 +179,7 @@ export default function Home() {
   }, [state]);
 
   return (
-    <div className="min-h-screen p-4 sm:p-8 relative">
+    <div className="min-h-screen p-6 sm:p-12 relative">
       {/* Theme button in the top right corner */}
       <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
         <ThemeToggle />
