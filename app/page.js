@@ -83,7 +83,7 @@ export default function Home() {
   
   // State for accordions
   const [openSections, setOpenSections] = useState({
-    patient: false,
+    patient: true,
     leftVentricle: false,
     rightVentricle: false,
     leftAtrium: false,
@@ -93,17 +93,6 @@ export default function Home() {
     pulmonaryValve: false,
     tricuspidValve: false
   });
-
-  // Scroll to the bottom of the page on initial load
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth"
-      });
-    }, 150); // slight delay to allow the accordion to render open
-    return () => clearTimeout(timer);
-  }, []);
 
   const toggleSection = (section) => {
     setOpenSections(prev => ({
