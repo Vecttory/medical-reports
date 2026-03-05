@@ -82,6 +82,15 @@ export async function processReport(prevState, formData) {
     pvd: parseFloat(formData.get("pvd") || "0"),
   };
 
+  const tricuspidValveData = {
+    trvmax: parseFloat(formData.get("trvmax") || "0"),
+    trMaxGrad: parseFloat(formData.get("trMaxGrad") || "0"),
+    ivcMaxDiam: parseFloat(formData.get("ivcMaxDiam") || "0"),
+    ivcMinDiam: parseFloat(formData.get("ivcMinDiam") || "0"),
+    psap: parseFloat(formData.get("psap") || "0"),
+    ivcicM: formData.get("ivcicM"),
+  };
+
   // Basic validation (even though HTML5 handles most of it)
   if (!patientData.name || !patientData.age || !patientData.date || !patientData.weight || !patientData.height) {
     return { error: "Faltan campos requeridos." };
@@ -156,6 +165,10 @@ export async function processReport(prevState, formData) {
 
     // Pulmonary Valve Calculations
     const { pvvmax, rvotvti, pvat, pvd } = pulmonaryValveData;
+
+    // Tricuspid Valve Calculations
+    const { trvmax, trMaxGrad, ivcMaxDiam, ivcMinDiam, psap, ivcicM } = tricuspidValveData;
+    const ivcci = ivcMaxDiam !== 0 ? ((ivcMaxDiam - ivcMinDiam) / ivcMaxDiam) * 100 : 0;
 
     // Format date to DD/MM/YYYY
     const [year, month, day] = patientData.date.split("-");
@@ -253,6 +266,15 @@ export async function processReport(prevState, formData) {
       rvotvti: truncateDecimals(rvotvti),
       pvat: truncateDecimals(pvat, 0),
       pvd: truncateDecimals(pvd),
+
+      // Tricuspid Valve Data
+      trvmax: truncateDecimals(trvmax),
+      trMaxGrad: truncateDecimals(trMaxGrad),
+      ivcMaxDiam: truncateDecimals(ivcMaxDiam),
+      // ivcMinDiam: truncateDecimals(ivcMinDiam), not used in the template
+      psap: truncateDecimals(psap),
+      ivcicM: ivcicM,
+      ivcci: truncateDecimals(ivcci, 0),
     });
 
     const buf = doc.getZip().generate({

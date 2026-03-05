@@ -1026,7 +1026,7 @@ export default function Home() {
           {/* PULMONARY VALVE SECTION */}
           <AccordionSection
             id="pulmonaryValve"
-            title="Válvula pulmonar"
+            title="Válvula Pulmonar"
             isOpen={openSections.pulmonaryValve}
             onToggle={() => toggleSection('pulmonaryValve')}
           >
@@ -1193,10 +1193,11 @@ export default function Home() {
                     Colapso Inspiratorio Observado:
                   </span>
                   <div className="flex items-center space-x-3 text-sm">
+                    {/* IVCIC(M): Inferior Vena Cava Inspiratory Collapse (Mayor o Menor) */}
                     <label className="flex items-center space-x-1 cursor-pointer">
                       <input 
                         type="radio" 
-                        name="inspiratoryCollapse" 
+                        name="ivcicM" 
                         value="mayor" 
                         required
                         className="text-blue-600 focus:ring-blue-500" 
@@ -1206,7 +1207,7 @@ export default function Home() {
                     <label className="flex items-center space-x-1 cursor-pointer">
                       <input 
                         type="radio" 
-                        name="inspiratoryCollapse" 
+                        name="ivcicM" 
                         value="menor" 
                         required
                         className="text-blue-600 focus:ring-blue-500" 
