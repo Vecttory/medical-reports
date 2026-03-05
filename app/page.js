@@ -79,7 +79,7 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
 
 export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
-  const [hasReference, setHasReference] = useState(false);
+  const [hasReference, setHasReference] = useState(null);
   
   // State for accordions
   const [openSections, setOpenSections] = useState({
@@ -308,8 +308,9 @@ export default function Home() {
                     type="radio" 
                     name="hasReference" 
                     value="false" 
-                    checked={!hasReference}
+                    checked={hasReference === false}
                     onChange={() => setHasReference(false)}
+                    required
                     className="text-blue-600 focus:ring-blue-500" 
                   />
                   <span>No</span>
@@ -319,8 +320,9 @@ export default function Home() {
                     type="radio" 
                     name="hasReference" 
                     value="true" 
-                    checked={hasReference}
+                    checked={hasReference === true}
                     onChange={() => setHasReference(true)}
+                    required
                     className="text-blue-600 focus:ring-blue-500" 
                   />
                   <span>Sí</span>
@@ -1245,7 +1247,7 @@ export default function Home() {
           )}
 
           {state?.success && (
-            <div className="p-4 text-sm text-green-700 bg-green-50 dark:bg-green-950/30 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-900/50 mb-6 mt-4">
+            <div className="p-4 text-sm text-green-700 bg-green-50 dark:bg-green-950/30 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-900/50 mt-5">
               {state.message}
             </div>
           )}
