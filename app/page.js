@@ -1199,6 +1199,7 @@ export default function Home() {
                         type="radio" 
                         name="ivcicM" 
                         value="mayor" 
+                        defaultChecked
                         required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
