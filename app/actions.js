@@ -252,7 +252,6 @@ export async function processReport(prevState, formData) {
       lvstj: truncateDecimals(lvstj),
       lvaad: truncateDecimals(lvaad),
       ilvaad: truncateDecimals(ilvaad),
-      obLeftVentricle: obLeftVentricleValue,
 
       // Right Ventricle Data
       rvbd: truncateDecimals(rvbd),
@@ -264,26 +263,22 @@ export async function processReport(prevState, formData) {
       rvesa: truncateDecimals(rvesa),
       rvfac: truncateDecimals(rvfac),
       rvfwt: truncateDecimals(rvfwt, 0),
-      obRightVentricle: obRightVentricleValue,
 
       // Left Atrium Data
       laapd: truncateDecimals(laapd),
       // lav: truncateDecimals(lav), not used in the template
       ilav: truncateDecimals(ilav),
-      obLeftAtrium: obLeftAtriumValue,
 
       // Right Atrium Data
       raa: truncateDecimals(raa),
       // rav: truncateDecimals(rav), not used in the template 
       irav: truncateDecimals(irav),
-      obRightAtrium: obRightAtriumValue,
 
       // Mitral Valve Data
       mvvti: truncateDecimals(mvvti),
       mvvmax: truncateDecimals(mvvmax),
       mvmg: truncateDecimals(mvmg),
       mva: truncateDecimals(mva),
-      obMitralValve: obMitralValveValue,
 
       // Aortic Valve Data
       avvti: truncateDecimals(avvti),
@@ -293,14 +288,12 @@ export async function processReport(prevState, formData) {
       avvmax: truncateDecimals(avvmax),
       avao: truncateDecimals(avao),
       iavao: truncateDecimals(iavao),
-      obAorticValve: obAorticValveValue,
 
       // Pulmonary Valve Data
       pvvmax: truncateDecimals(pvvmax),
       rvotvti: truncateDecimals(rvotvti),
       pvat: truncateDecimals(pvat, 0),
       pvd: truncateDecimals(pvd),
-      obPulmonaryValve: obPulmonaryValveValue,
 
       // Tricuspid Valve Data
       trvmax: truncateDecimals(trvmax),
@@ -309,6 +302,15 @@ export async function processReport(prevState, formData) {
       // ivcMinDiam: truncateDecimals(ivcMinDiam), not used in the template
       psap: truncateDecimals(psap),
       ivcci: ivcci, // No truncation needed, it's already an integer from the form
+
+      // Observations
+      obLeftVentricle: obLeftVentricleValue,
+      obRightVentricle: obRightVentricleValue,
+      obLeftAtrium: obLeftAtriumValue,
+      obRightAtrium: obRightAtriumValue,
+      obMitralValve: obMitralValveValue,
+      obAorticValve: obAorticValveValue,
+      obPulmonaryValve: obPulmonaryValveValue,
       obTricuspidValve: obTricuspidValveValue,
 
       // Conclusions (no decimals values)
