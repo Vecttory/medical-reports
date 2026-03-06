@@ -89,6 +89,7 @@ export async function processReport(prevState, formData) {
     ivcMaxDiam: parseFloat(formData.get("ivcMaxDiam") || "0"),
     ivcMinDiam: parseFloat(formData.get("ivcMinDiam") || "0"),
     psap: parseFloat(formData.get("psap") || "0"),
+    ivcci: parseInt(formData.get("ivcci") || "0", 10),
   };
 
   // Basic validation (even though HTML5 handles most of it)
@@ -167,8 +168,7 @@ export async function processReport(prevState, formData) {
     const { pvvmax, rvotvti, pvat, pvd } = pulmonaryValveData;
 
     // Tricuspid Valve Calculations
-    const { trvmax, trMaxGrad, ivcMaxDiam, ivcMinDiam, psap } = tricuspidValveData;
-    const ivcci = ivcMaxDiam !== 0 ? ((ivcMaxDiam - ivcMinDiam) / ivcMaxDiam) * 100 : 0;
+    const { trvmax, trMaxGrad, ivcMaxDiam, ivcMinDiam, psap, ivcci } = tricuspidValveData;
     
     // Conclusions Calculations
     const pasp = rap + trMaxGrad;
@@ -276,7 +276,7 @@ export async function processReport(prevState, formData) {
       ivcMaxDiam: truncateDecimals(ivcMaxDiam),
       // ivcMinDiam: truncateDecimals(ivcMinDiam), not used in the template
       psap: truncateDecimals(psap),
-      ivcci: truncateDecimals(ivcci, 0),
+      ivcci: ivcci, // No truncation needed, it's already an integer from the form
 
       // Conclusions (no decimals values)
       lvefInt: truncateDecimals(lvef, 0),

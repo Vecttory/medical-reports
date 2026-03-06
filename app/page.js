@@ -81,6 +81,19 @@ export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
   const [hasReference, setHasReference] = useState(null);
   
+  // State for Tricuspid Valve calculation
+  const [ivcMaxDiam, setIvcMaxDiam] = useState('');
+  const [ivcMinDiam, setIvcMinDiam] = useState('');
+
+  // Calculate IVCCI
+  const parsedIvcMax = parseFloat(ivcMaxDiam);
+  const parsedIvcMin = parseFloat(ivcMinDiam);
+  let ivcciDisplay = 0;
+  if (!isNaN(parsedIvcMax) && !isNaN(parsedIvcMin) && parsedIvcMax > 0) {
+    const ivcci = ((parsedIvcMax - parsedIvcMin) / parsedIvcMax) * 100;
+    ivcciDisplay = Math.trunc(ivcci);
+  }
+  
   // State for accordions
   const [openSections, setOpenSections] = useState({
     patient: true,
@@ -1156,6 +1169,12 @@ export default function Home() {
                   name="ivcMaxDiam"
                   step="0.01"
                   required
+                  value={ivcMaxDiam}
+                  onChange={(e) => {
+                    setIvcMaxDiam(e.target.value);
+                    handleInput(e);
+                  }}
+                  onInvalid={handleInvalid}
                   /* defaultValue="1.72" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
@@ -1172,6 +1191,12 @@ export default function Home() {
                   name="ivcMinDiam"
                   step="0.01"
                   required
+                  value={ivcMinDiam}
+                  onChange={(e) => {
+                    setIvcMinDiam(e.target.value);
+                    handleInput(e);
+                  }}
+                  onInvalid={handleInvalid}
                   /* defaultValue="1.00" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
@@ -1191,6 +1216,21 @@ export default function Home() {
                   /* defaultValue="24" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+
+              <div>
+                {/* Calculated IVCCI Display */}
+                <label className="block text-sm font-bold mb-2 text-blue-700 dark:text-blue-300">
+                  IC-VCI
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  value={`${ivcciDisplay} %`}
+                  className="w-full px-2 py-2 border border-blue-700 dark:border-blue-300 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 font-bold cursor-default focus:outline-none"
+                  placeholder="-"
+                />
+                <input type="hidden" name="ivcci" value={ivcciDisplay} />
               </div>
             </div>
           </AccordionSection>
