@@ -79,7 +79,7 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
 
 export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
-  const [hasReference, setHasReference] = useState(null);
+  const [hasReference, setHasReference] = useState(false);
 
   // State for Observaciones
   const [hasObLeftVentricle, setHasObLeftVentricle] = useState(null);
@@ -224,7 +224,7 @@ export default function Home() {
                 id="name"
                 name="name"
                 required
-                /* defaultValue="Rui Lopéz" */
+                defaultValue="Rui Lopéz"
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
           </div>
@@ -241,7 +241,7 @@ export default function Home() {
                 name="age"
                 min="0"
                 required
-                /* defaultValue="45" */
+                defaultValue="45"
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -270,7 +270,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
-                /* defaultValue="65" */
+                defaultValue="65"
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -287,7 +287,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
-                /* defaultValue="1.67" */
+                defaultValue="1.67"
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -375,7 +375,7 @@ export default function Home() {
                   name="lvedd"
                   step="0.01"
                   required
-                  /* defaultValue="4.15" */
+                  defaultValue="4.15"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -391,7 +391,7 @@ export default function Home() {
                   name="lvedv"
                   step="0.01"
                   required
-                  /* defaultValue="94.17" */
+                  defaultValue="94.17"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -407,7 +407,7 @@ export default function Home() {
                   name="lvmass"
                   step="0.01"
                   required
-                  /* defaultValue="99.47" */
+                  defaultValue="99.47"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -423,7 +423,7 @@ export default function Home() {
                   name="ivsd"
                   step="0.01"
                   required
-                  /* defaultValue="0.8" */
+                  defaultValue="0.8"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -439,7 +439,7 @@ export default function Home() {
                   name="lvided"
                   step="0.01"
                   required
-                  /* defaultValue="4.2" */
+                  defaultValue="4.2"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -455,7 +455,7 @@ export default function Home() {
                   name="lvpwd"
                   step="0.01"
                   required
-                  /* defaultValue="0.78" */
+                  defaultValue="0.78"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -471,7 +471,7 @@ export default function Home() {
                   name="lvesv"
                   step="0.01"
                   required
-                  /* defaultValue="28.87" */
+                  defaultValue="28.87"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -486,7 +486,7 @@ export default function Home() {
                   name="eWave"
                   step="0.01"
                   required
-                  /* defaultValue="48.84" */
+                  defaultValue="48.84"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -501,7 +501,7 @@ export default function Home() {
                   name="aWave"
                   step="0.01"
                   required
-                  /* defaultValue="58.82" */
+                  defaultValue="58.82"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -517,7 +517,7 @@ export default function Home() {
                   name="lvfdt"
                   step="0.01"
                   required
-                  /* defaultValue="192" */
+                  defaultValue="192"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -533,7 +533,7 @@ export default function Home() {
                   name="lfivrt"
                   step="0.01"
                   required
-                  /* defaultValue="96" */
+                  defaultValue="96"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -548,7 +548,7 @@ export default function Home() {
                   name="ePrimeSeptal"
                   step="0.01"
                   required
-                  /* defaultValue="7.79" */
+                  defaultValue="7.79"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -563,7 +563,7 @@ export default function Home() {
                   name="ePrimeLateral"
                   step="0.01"
                   required
-                  /* defaultValue="11.38" */
+                  defaultValue="11.38"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -579,7 +579,7 @@ export default function Home() {
                   name="lvotd"
                   step="0.01"
                   required
-                  /* defaultValue="2.14" */
+                  defaultValue="2.14"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -595,7 +595,7 @@ export default function Home() {
                   name="lvar"
                   step="0.01"
                   required
-                  /* defaultValue="2.99" */
+                  defaultValue="2.99"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -611,7 +611,7 @@ export default function Home() {
                   name="lvstj"
                   step="0.01"
                   required
-                  /* defaultValue="2.27" */
+                  defaultValue="2.27"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -627,7 +627,7 @@ export default function Home() {
                   name="lvaad"
                   step="0.01"
                   required
-                  /* defaultValue="2.48" */
+                  defaultValue="2.48"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -646,6 +646,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObLeftVentricle === false}
                         onChange={() => setHasObLeftVentricle(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -657,6 +658,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObLeftVentricle === true}
                         onChange={() => setHasObLeftVentricle(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -696,7 +698,7 @@ export default function Home() {
                   name="rvbd"
                   step="0.01"
                   required
-                  /* defaultValue="3.88" */
+                  defaultValue="3.88"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -712,7 +714,7 @@ export default function Home() {
                   name="rvmd"
                   step="0.01"
                   required
-                  /* defaultValue="2.97" */
+                  defaultValue="2.97"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -728,7 +730,7 @@ export default function Home() {
                   name="rvld"
                   step="0.01"
                   required
-                  /* defaultValue="7.15" */
+                  defaultValue="7.15"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -743,7 +745,7 @@ export default function Home() {
                   name="sWave"
                   step="0.01"
                   required
-                  /* defaultValue="13.18" */
+                  defaultValue="13.18"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -759,7 +761,7 @@ export default function Home() {
                   name="rvtapse"
                   step="0.01"
                   required
-                  /* defaultValue="22" */
+                  defaultValue="22"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -775,7 +777,7 @@ export default function Home() {
                   name="rveda"
                   step="0.01"
                   required
-                  /* defaultValue="17.15" */
+                  defaultValue="17.15"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -791,7 +793,7 @@ export default function Home() {
                   name="rvesa"
                   step="0.01"
                   required
-                  /* defaultValue="10.18" */
+                  defaultValue="10.18"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -807,7 +809,7 @@ export default function Home() {
                   name="rvfwt"
                   step="0.01"
                   required
-                  /* defaultValue="4" */
+                  defaultValue="4"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -826,6 +828,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObRightVentricle === false}
                         onChange={() => setHasObRightVentricle(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -837,6 +840,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObRightVentricle === true}
                         onChange={() => setHasObRightVentricle(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -876,7 +880,7 @@ export default function Home() {
                   name="laapd"
                   step="0.01"
                   required
-                  /* defaultValue="3.63" */
+                  defaultValue="3.63"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -892,7 +896,7 @@ export default function Home() {
                   name="lav"
                   step="0.01"
                   required
-                  /* defaultValue="43.84" */
+                  defaultValue="43.84"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -911,6 +915,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObLeftAtrium === false}
                         onChange={() => setHasObLeftAtrium(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -922,6 +927,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObLeftAtrium === true}
                         onChange={() => setHasObLeftAtrium(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -961,7 +967,7 @@ export default function Home() {
                   name="raa"
                   step="0.01"
                   required
-                  /* defaultValue="15.62" */
+                  defaultValue="15.62"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -977,7 +983,7 @@ export default function Home() {
                   name="rav"
                   step="0.01"
                   required
-                  /* defaultValue="42.19" */
+                  defaultValue="42.19"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -993,7 +999,7 @@ export default function Home() {
                   name="rap"
                   step="0.01"
                   required
-                  /* defaultValue="4.00" */
+                  defaultValue="4.00"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1012,6 +1018,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObRightAtrium === false}
                         onChange={() => setHasObRightAtrium(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1023,6 +1030,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObRightAtrium === true}
                         onChange={() => setHasObRightAtrium(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1062,7 +1070,7 @@ export default function Home() {
                   name="mvvti"
                   step="0.01"
                   required
-                  /* defaultValue="21.26" */
+                  defaultValue="21.26"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1078,7 +1086,7 @@ export default function Home() {
                   name="mvvmax"
                   step="0.01"
                   required
-                  /* defaultValue="71.31" */
+                  defaultValue="71.31"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1094,7 +1102,7 @@ export default function Home() {
                   name="mvmg"
                   step="0.01"
                   required
-                  /* defaultValue="0.81" */
+                  defaultValue="0.81"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1110,7 +1118,7 @@ export default function Home() {
                   name="mva"
                   step="0.01"
                   required
-                  /* defaultValue="3.26" */
+                  defaultValue="3.26"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1129,6 +1137,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObMitralValve === false}
                         onChange={() => setHasObMitralValve(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1140,6 +1149,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObMitralValve === true}
                         onChange={() => setHasObMitralValve(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1179,7 +1189,7 @@ export default function Home() {
                   name="avvti"
                   step="0.01"
                   required
-                  /* defaultValue="26.29" */
+                  defaultValue="26.29"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1195,7 +1205,7 @@ export default function Home() {
                   name="lvotvti"
                   step="0.01"
                   required
-                  /* defaultValue="18.02" */
+                  defaultValue="18.02"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1211,7 +1221,7 @@ export default function Home() {
                   name="avMaxGrad"
                   step="0.01"
                   required
-                  /* defaultValue="7.98" */
+                  defaultValue="7.98"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1227,7 +1237,7 @@ export default function Home() {
                   name="avMeanGrad"
                   step="0.01"
                   required
-                  /* defaultValue="3.62" */
+                  defaultValue="3.62"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1243,7 +1253,7 @@ export default function Home() {
                   name="avvmax"
                   step="0.01"
                   required
-                  /* defaultValue="141.18" */
+                  defaultValue="141.18"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1259,7 +1269,7 @@ export default function Home() {
                   name="avao"
                   step="0.01"
                   required
-                  /* defaultValue="2.46" */
+                  defaultValue="2.46"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1278,6 +1288,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObAorticValve === false}
                         onChange={() => setHasObAorticValve(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1289,6 +1300,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObAorticValve === true}
                         onChange={() => setHasObAorticValve(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1328,7 +1340,7 @@ export default function Home() {
                   name="pvvmax"
                   step="0.01"
                   required
-                  /* defaultValue="88.42" */
+                  defaultValue="88.42"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1344,7 +1356,7 @@ export default function Home() {
                   name="rvotvti"
                   step="0.01"
                   required
-                  /* defaultValue="13.86" */
+                  defaultValue="13.86"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1360,7 +1372,7 @@ export default function Home() {
                   name="pvat"
                   step="0.01"
                   required
-                  /* defaultValue="172" */
+                  defaultValue="172"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1376,7 +1388,7 @@ export default function Home() {
                   name="pvd"
                   step="0.01"
                   required
-                  /* defaultValue="2.02" */
+                  defaultValue="2.02"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1395,6 +1407,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObPulmonaryValve === false}
                         onChange={() => setHasObPulmonaryValve(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1406,6 +1419,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObPulmonaryValve === true}
                         onChange={() => setHasObPulmonaryValve(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1446,7 +1460,7 @@ export default function Home() {
                   name="trvmax"
                   step="0.01"
                   required
-                  /* defaultValue="222.32" */
+                  defaultValue="222.32"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1462,7 +1476,7 @@ export default function Home() {
                   name="trMaxGrad"
                   step="0.01"
                   required
-                  /* defaultValue="20.5" */
+                  defaultValue="20.5"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1484,7 +1498,7 @@ export default function Home() {
                     handleInput(e);
                   }}
                   onInvalid={handleInvalid}
-                  /* defaultValue="1.72" */
+                  defaultValue="1.72"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1506,7 +1520,7 @@ export default function Home() {
                     handleInput(e);
                   }}
                   onInvalid={handleInvalid}
-                  /* defaultValue="1.00" */
+                  defaultValue="1.00"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1522,7 +1536,7 @@ export default function Home() {
                   name="psap"
                   step="0.01"
                   required
-                  /* defaultValue="24" */
+                  defaultValue="24"
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1556,6 +1570,7 @@ export default function Home() {
                         value="false" 
                         checked={hasObTricuspidValve === false}
                         onChange={() => setHasObTricuspidValve(false)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1567,6 +1582,7 @@ export default function Home() {
                         value="true" 
                         checked={hasObTricuspidValve === true}
                         onChange={() => setHasObTricuspidValve(true)}
+                        required
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
