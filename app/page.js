@@ -68,7 +68,13 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
         }`}
       >
         <div className="overflow-hidden p-1 -m-1">
-          <div className="p-5 pt-6">
+          <div className="p-5 pt-6" onFocus={!isActuallyOpen ? () => {
+            if (onToggle) {
+              onToggle();
+            } else {
+              setInternalIsOpen(true);
+            }
+          } : undefined}>
             {children}
           </div>
         </div>
@@ -106,7 +112,7 @@ export default function Home() {
   
   // State for accordions
   const [openSections, setOpenSections] = useState({
-    patient: true,
+    patient: false,
     leftVentricle: false,
     rightVentricle: false,
     leftAtrium: false,
@@ -281,11 +287,11 @@ export default function Home() {
                 </label>
                 <div className="flex items-center space-x-3 text-sm">
                   <label className="flex items-center space-x-1 cursor-pointer">
-                    <input type="radio" name="weightUnit" value="kg" defaultChecked className="text-blue-600 focus:ring-blue-500" />
+                    <input type="radio" name="weightUnit" value="kg" defaultChecked className="text-blue-600 focus:ring-blue-500" tabIndex={0} />
                     <span>Kg</span>
                   </label>
                   <label className="flex items-center space-x-1 cursor-pointer">
-                    <input type="radio" name="weightUnit" value="lbs" className="text-blue-600 focus:ring-blue-500" />
+                    <input type="radio" name="weightUnit" value="lbs" className="text-blue-600 focus:ring-blue-500" tabIndex={0} />
                     <span>Lbs</span>
                   </label>
                 </div>
@@ -350,6 +356,7 @@ export default function Home() {
                     checked={hasReference === false}
                     onChange={() => setHasReference(false)}
                     required
+                    tabIndex={0}
                     className="text-blue-600 focus:ring-blue-500" 
                   />
                   <span>No</span>
@@ -362,6 +369,7 @@ export default function Home() {
                     checked={hasReference === true}
                     onChange={() => setHasReference(true)}
                     required
+                    tabIndex={0}
                     className="text-blue-600 focus:ring-blue-500" 
                   />
                   <span>Sí</span>
@@ -674,6 +682,7 @@ export default function Home() {
                         checked={hasObLeftVentricle === false}
                         onChange={() => setHasObLeftVentricle(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -686,6 +695,7 @@ export default function Home() {
                         checked={hasObLeftVentricle === true}
                         onChange={() => setHasObLeftVentricle(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -856,6 +866,7 @@ export default function Home() {
                         checked={hasObRightVentricle === false}
                         onChange={() => setHasObRightVentricle(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -868,6 +879,7 @@ export default function Home() {
                         checked={hasObRightVentricle === true}
                         onChange={() => setHasObRightVentricle(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -943,6 +955,7 @@ export default function Home() {
                         checked={hasObLeftAtrium === false}
                         onChange={() => setHasObLeftAtrium(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -955,6 +968,7 @@ export default function Home() {
                         checked={hasObLeftAtrium === true}
                         onChange={() => setHasObLeftAtrium(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1046,6 +1060,7 @@ export default function Home() {
                         checked={hasObRightAtrium === false}
                         onChange={() => setHasObRightAtrium(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1058,6 +1073,7 @@ export default function Home() {
                         checked={hasObRightAtrium === true}
                         onChange={() => setHasObRightAtrium(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1165,6 +1181,7 @@ export default function Home() {
                         checked={hasObMitralValve === false}
                         onChange={() => setHasObMitralValve(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1177,6 +1194,7 @@ export default function Home() {
                         checked={hasObMitralValve === true}
                         onChange={() => setHasObMitralValve(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1316,6 +1334,7 @@ export default function Home() {
                         checked={hasObAorticValve === false}
                         onChange={() => setHasObAorticValve(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1328,6 +1347,7 @@ export default function Home() {
                         checked={hasObAorticValve === true}
                         onChange={() => setHasObAorticValve(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1435,6 +1455,7 @@ export default function Home() {
                         checked={hasObPulmonaryValve === false}
                         onChange={() => setHasObPulmonaryValve(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1447,6 +1468,7 @@ export default function Home() {
                         checked={hasObPulmonaryValve === true}
                         onChange={() => setHasObPulmonaryValve(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
@@ -1602,6 +1624,7 @@ export default function Home() {
                         checked={hasObTricuspidValve === false}
                         onChange={() => setHasObTricuspidValve(false)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>No</span>
@@ -1614,6 +1637,7 @@ export default function Home() {
                         checked={hasObTricuspidValve === true}
                         onChange={() => setHasObTricuspidValve(true)}
                         required
+                        tabIndex={0}
                         className="text-blue-600 focus:ring-blue-500" 
                       />
                       <span>Sí</span>
