@@ -104,10 +104,11 @@ export default function Home() {
   // Calculate IVCCI
   const parsedIvcMax = parseFloat(ivcMaxDiam);
   const parsedIvcMin = parseFloat(ivcMinDiam);
-  let ivcciDisplay = 0;
+  let ivcciDisplay = "0.00";
   if (!isNaN(parsedIvcMax) && !isNaN(parsedIvcMin) && parsedIvcMax > 0) {
     const ivcci = ((parsedIvcMax - parsedIvcMin) / parsedIvcMax) * 100;
-    ivcciDisplay = Math.trunc(ivcci);
+    // Truncate to 2 decimals and format string
+    ivcciDisplay = (Math.trunc(ivcci * 100) / 100).toFixed(2);
   }
   
   // State for accordions
@@ -1554,7 +1555,9 @@ export default function Home() {
 
               <div>
                 {/* IVC MIN DIAM: IVC Minimum Diameter */}
-                <label htmlFor="ivcMinDiam" className="block text-sm font-bold mb-2">
+                <label htmlFor="ivcMinDiam" className={`block text-sm font-bold mb-2 ${
+                  parsedIvcMin > parsedIvcMax ? 'text-red-700 dark:text-red-400' : ''
+                }`}>
                   Díametro Mínimo VCI (cm)
                 </label>
                 <input
@@ -1570,7 +1573,11 @@ export default function Home() {
                   }}
                   onInvalid={handleInvalid}
                   /* defaultValue="1.00" */
-                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  className={`scroll-mt-12 w-full px-2 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow ${
+                    parsedIvcMin > parsedIvcMax
+                      ? 'border-red-600 dark:border-red-400 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                      : 'border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-950'
+                  }`}
                 />
               </div>
 
@@ -1582,13 +1589,13 @@ export default function Home() {
                 <input
                   type="text"
                   readOnly
+                  tabIndex={-1}
                   value={`${ivcciDisplay} %`}
                   className={`w-full px-2 py-2 border rounded-lg font-bold cursor-default focus:outline-none ${
                     ivcciDisplay < 0 || ivcciDisplay > 100
                       ? 'border-red-600 dark:border-red-400 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
                       : 'border-blue-700 dark:border-blue-300 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
                   }`}
-                  placeholder="-"
                 />
                 <input type="hidden" name="ivcci" value={ivcciDisplay} />
               </div>
