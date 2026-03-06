@@ -1554,14 +1554,18 @@ export default function Home() {
 
               <div>
                 {/* Calculated IVCCI Display */}
-                <label className="block text-sm font-bold mb-2 text-blue-700 dark:text-blue-300">
+                <label className={`block text-sm font-bold mb-2 ${ivcciDisplay < 0 || ivcciDisplay > 100 ? 'text-red-700 dark:text-red-400' : 'text-blue-700 dark:text-blue-300'}`}>
                   Índice Colapsabilidad VCI
                 </label>
                 <input
                   type="text"
                   readOnly
                   value={`${ivcciDisplay} %`}
-                  className="w-full px-2 py-2 border border-blue-700 dark:border-blue-300 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 font-bold cursor-default focus:outline-none"
+                  className={`w-full px-2 py-2 border rounded-lg font-bold cursor-default focus:outline-none ${
+                    ivcciDisplay < 0 || ivcciDisplay > 100
+                      ? 'border-red-600 dark:border-red-400 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                      : 'border-blue-700 dark:border-blue-300 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                  }`}
                   placeholder="-"
                 />
                 <input type="hidden" name="ivcci" value={ivcciDisplay} />
