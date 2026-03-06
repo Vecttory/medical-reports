@@ -80,6 +80,16 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
 export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
   const [hasReference, setHasReference] = useState(null);
+
+  // State for Observaciones
+  const [hasObLeftVentricle, setHasObLeftVentricle] = useState(null);
+  const [hasObRightVentricle, setHasObRightVentricle] = useState(null);
+  const [hasObLeftAtrium, setHasObLeftAtrium] = useState(null);
+  const [hasObRightAtrium, setHasObRightAtrium] = useState(null);
+  const [hasObMitralValve, setHasObMitralValve] = useState(null);
+  const [hasObAorticValve, setHasObAorticValve] = useState(null);
+  const [hasObPulmonaryValve, setHasObPulmonaryValve] = useState(null);
+  const [hasObTricuspidValve, setHasObTricuspidValve] = useState(null);
   
   // State for Tricuspid Valve calculation
   const [ivcMaxDiam, setIvcMaxDiam] = useState('');
@@ -622,6 +632,48 @@ export default function Home() {
                 />
               </div>
 
+              {/* Observaciones Left Ventricle */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObLeftVentricle" 
+                        value="false" 
+                        checked={hasObLeftVentricle === false}
+                        onChange={() => setHasObLeftVentricle(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObLeftVentricle" 
+                        value="true" 
+                        checked={hasObLeftVentricle === true}
+                        onChange={() => setHasObLeftVentricle(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObLeftVentricle && (
+                  <textarea
+                    id="obLeftVentricle"
+                    name="obLeftVentricle"
+                    rows="3"
+                    aria-label="Observaciones Ventrículo Izquierdo"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
+              </div>
             </div>
           </AccordionSection>
 
@@ -760,6 +812,48 @@ export default function Home() {
                 />
               </div>
 
+              {/* Observaciones Right Ventricle */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObRightVentricle" 
+                        value="false" 
+                        checked={hasObRightVentricle === false}
+                        onChange={() => setHasObRightVentricle(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObRightVentricle" 
+                        value="true" 
+                        checked={hasObRightVentricle === true}
+                        onChange={() => setHasObRightVentricle(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObRightVentricle && (
+                  <textarea
+                    id="obRightVentricle"
+                    name="obRightVentricle"
+                    rows="3"
+                    aria-label="Observaciones Ventrículo Derecho"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
+              </div>
             </div>
           </AccordionSection>
 
@@ -801,6 +895,49 @@ export default function Home() {
                   /* defaultValue="43.84" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+
+              {/* Observaciones Left Atrium */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObLeftAtrium" 
+                        value="false" 
+                        checked={hasObLeftAtrium === false}
+                        onChange={() => setHasObLeftAtrium(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObLeftAtrium" 
+                        value="true" 
+                        checked={hasObLeftAtrium === true}
+                        onChange={() => setHasObLeftAtrium(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObLeftAtrium && (
+                  <textarea
+                    id="obLeftAtrium"
+                    name="obLeftAtrium"
+                    rows="3"
+                    aria-label="Observaciones Aurícula Izquierda"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
               </div>
             </div>
           </AccordionSection>
@@ -859,6 +996,49 @@ export default function Home() {
                   /* defaultValue="4.00" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+
+              {/* Observaciones Right Atrium */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObRightAtrium" 
+                        value="false" 
+                        checked={hasObRightAtrium === false}
+                        onChange={() => setHasObRightAtrium(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObRightAtrium" 
+                        value="true" 
+                        checked={hasObRightAtrium === true}
+                        onChange={() => setHasObRightAtrium(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObRightAtrium && (
+                  <textarea
+                    id="obRightAtrium"
+                    name="obRightAtrium"
+                    rows="3"
+                    aria-label="Observaciones Aurícula Derecha"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
               </div>
             </div>
           </AccordionSection>
@@ -933,6 +1113,49 @@ export default function Home() {
                   /* defaultValue="3.26" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+
+              {/* Observaciones Mitral Valve */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObMitralValve" 
+                        value="false" 
+                        checked={hasObMitralValve === false}
+                        onChange={() => setHasObMitralValve(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObMitralValve" 
+                        value="true" 
+                        checked={hasObMitralValve === true}
+                        onChange={() => setHasObMitralValve(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObMitralValve && (
+                  <textarea
+                    id="obMitralValve"
+                    name="obMitralValve"
+                    rows="3"
+                    aria-label="Observaciones Válvula Mitral"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
               </div>
             </div>
           </AccordionSection>
@@ -1040,6 +1263,49 @@ export default function Home() {
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
+
+              {/* Observaciones Aortic Valve */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObAorticValve" 
+                        value="false" 
+                        checked={hasObAorticValve === false}
+                        onChange={() => setHasObAorticValve(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObAorticValve" 
+                        value="true" 
+                        checked={hasObAorticValve === true}
+                        onChange={() => setHasObAorticValve(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObAorticValve && (
+                  <textarea
+                    id="obAorticValve"
+                    name="obAorticValve"
+                    rows="3"
+                    aria-label="Observaciones Válvula Aórtica"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
+              </div>
             </div>
           </AccordionSection>
 
@@ -1113,6 +1379,49 @@ export default function Home() {
                   /* defaultValue="2.02" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
+              </div>
+
+              {/* Observaciones Pulmonary Valve */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObPulmonaryValve" 
+                        value="false" 
+                        checked={hasObPulmonaryValve === false}
+                        onChange={() => setHasObPulmonaryValve(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObPulmonaryValve" 
+                        value="true" 
+                        checked={hasObPulmonaryValve === true}
+                        onChange={() => setHasObPulmonaryValve(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObPulmonaryValve && (
+                  <textarea
+                    id="obPulmonaryValve"
+                    name="obPulmonaryValve"
+                    rows="3"
+                    aria-label="Observaciones Válvula Pulmonar"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
               </div>
             </div>
           </AccordionSection>
@@ -1231,6 +1540,49 @@ export default function Home() {
                   placeholder="-"
                 />
                 <input type="hidden" name="ivcci" value={ivcciDisplay} />
+              </div>
+
+              {/* Observaciones Tricuspid Valve */}
+              <div className="sm:col-span-2 w-full mt-2">
+                <div className="flex items-center space-x-4">
+                  <span className="block text-sm font-bold">
+                    Observaciones
+                  </span>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObTricuspidValve" 
+                        value="false" 
+                        checked={hasObTricuspidValve === false}
+                        onChange={() => setHasObTricuspidValve(false)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>No</span>
+                    </label>
+                    <label className="flex items-center space-x-1 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="hasObTricuspidValve" 
+                        value="true" 
+                        checked={hasObTricuspidValve === true}
+                        onChange={() => setHasObTricuspidValve(true)}
+                        className="text-blue-600 focus:ring-blue-500" 
+                      />
+                      <span>Sí</span>
+                    </label>
+                  </div>
+                </div>
+                {hasObTricuspidValve && (
+                  <textarea
+                    id="obTricuspidValve"
+                    name="obTricuspidValve"
+                    rows="3"
+                    aria-label="Observaciones Válvula Tricúspide"
+                    required
+                    className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
+                  ></textarea>
+                )}
               </div>
             </div>
           </AccordionSection>

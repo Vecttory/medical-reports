@@ -181,6 +181,31 @@ export async function processReport(prevState, formData) {
     const hasRefBool = patientData.hasReference === "true";
     const referenceValue = hasRefBool ? patientData.reference : "";
 
+    // Observaciones logic
+    const hasObLeftVentricleBool = formData.get("hasObLeftVentricle") === "true";
+    const obLeftVentricleValue = hasObLeftVentricleBool && formData.get("obLeftVentricle")?.trim() ? ` ${formData.get("obLeftVentricle")}` : "";
+
+    const hasObRightVentricleBool = formData.get("hasObRightVentricle") === "true";
+    const obRightVentricleValue = hasObRightVentricleBool && formData.get("obRightVentricle")?.trim() ? ` ${formData.get("obRightVentricle")}` : "";
+
+    const hasObLeftAtriumBool = formData.get("hasObLeftAtrium") === "true";
+    const obLeftAtriumValue = hasObLeftAtriumBool && formData.get("obLeftAtrium")?.trim() ? ` ${formData.get("obLeftAtrium")}` : "";
+
+    const hasObRightAtriumBool = formData.get("hasObRightAtrium") === "true";
+    const obRightAtriumValue = hasObRightAtriumBool && formData.get("obRightAtrium")?.trim() ? ` ${formData.get("obRightAtrium")}` : "";
+
+    const hasObMitralValveBool = formData.get("hasObMitralValve") === "true";
+    const obMitralValveValue = hasObMitralValveBool && formData.get("obMitralValve")?.trim() ? ` ${formData.get("obMitralValve")}` : "";
+
+    const hasObAorticValveBool = formData.get("hasObAorticValve") === "true";
+    const obAorticValveValue = hasObAorticValveBool && formData.get("obAorticValve")?.trim() ? ` ${formData.get("obAorticValve")}` : "";
+
+    const hasObPulmonaryValveBool = formData.get("hasObPulmonaryValve") === "true";
+    const obPulmonaryValveValue = hasObPulmonaryValveBool && formData.get("obPulmonaryValve")?.trim() ? ` ${formData.get("obPulmonaryValve")}` : "";
+
+    const hasObTricuspidValveBool = formData.get("hasObTricuspidValve") === "true";
+    const obTricuspidValveValue = hasObTricuspidValveBool && formData.get("obTricuspidValve")?.trim() ? ` ${formData.get("obTricuspidValve")}` : "";
+
     // Load the template
     const templatePath = path.join(process.cwd(), "public", "medical-rerpot-template.docx");
     const content = fs.readFileSync(templatePath, "binary");
@@ -227,6 +252,7 @@ export async function processReport(prevState, formData) {
       lvstj: truncateDecimals(lvstj),
       lvaad: truncateDecimals(lvaad),
       ilvaad: truncateDecimals(ilvaad),
+      obLeftVentricle: obLeftVentricleValue,
 
       // Right Ventricle Data
       rvbd: truncateDecimals(rvbd),
@@ -238,22 +264,26 @@ export async function processReport(prevState, formData) {
       rvesa: truncateDecimals(rvesa),
       rvfac: truncateDecimals(rvfac),
       rvfwt: truncateDecimals(rvfwt, 0),
+      obRightVentricle: obRightVentricleValue,
 
       // Left Atrium Data
       laapd: truncateDecimals(laapd),
       // lav: truncateDecimals(lav), not used in the template
       ilav: truncateDecimals(ilav),
+      obLeftAtrium: obLeftAtriumValue,
 
       // Right Atrium Data
       raa: truncateDecimals(raa),
       // rav: truncateDecimals(rav), not used in the template 
       irav: truncateDecimals(irav),
+      obRightAtrium: obRightAtriumValue,
 
       // Mitral Valve Data
       mvvti: truncateDecimals(mvvti),
       mvvmax: truncateDecimals(mvvmax),
       mvmg: truncateDecimals(mvmg),
       mva: truncateDecimals(mva),
+      obMitralValve: obMitralValveValue,
 
       // Aortic Valve Data
       avvti: truncateDecimals(avvti),
@@ -263,12 +293,14 @@ export async function processReport(prevState, formData) {
       avvmax: truncateDecimals(avvmax),
       avao: truncateDecimals(avao),
       iavao: truncateDecimals(iavao),
+      obAorticValve: obAorticValveValue,
 
       // Pulmonary Valve Data
       pvvmax: truncateDecimals(pvvmax),
       rvotvti: truncateDecimals(rvotvti),
       pvat: truncateDecimals(pvat, 0),
       pvd: truncateDecimals(pvd),
+      obPulmonaryValve: obPulmonaryValveValue,
 
       // Tricuspid Valve Data
       trvmax: truncateDecimals(trvmax),
@@ -277,6 +309,7 @@ export async function processReport(prevState, formData) {
       // ivcMinDiam: truncateDecimals(ivcMinDiam), not used in the template
       psap: truncateDecimals(psap),
       ivcci: ivcci, // No truncation needed, it's already an integer from the form
+      obTricuspidValve: obTricuspidValveValue,
 
       // Conclusions (no decimals values)
       lvefInt: truncateDecimals(lvef, 0),
