@@ -1102,7 +1102,7 @@ export default function Home() {
               <div>
                 {/* PVD: Pulmonary Valve Diameter */}
                 <label htmlFor="pvd" className="block text-sm font-bold mb-2">
-                  Diámetro (cm)
+                  Diámetro AAP (cm)
                 </label>
                 <input
                   type="number"
@@ -1161,7 +1161,7 @@ export default function Home() {
               <div>
                 {/* IVC MAX DIAM: IVC Maximum Diameter */}
                 <label htmlFor="ivcMaxDiam" className="block text-sm font-bold mb-2">
-                  Diámetro Máximo (cm)
+                  Diámetro Máximo VCI (cm)
                 </label>
                 <input
                   type="number"
@@ -1183,7 +1183,7 @@ export default function Home() {
               <div>
                 {/* IVC MIN DIAM: IVC Minimum Diameter */}
                 <label htmlFor="ivcMinDiam" className="block text-sm font-bold mb-2">
-                  Díametro Mínimo (cm)
+                  Díametro Mínimo VCI (cm)
                 </label>
                 <input
                   type="number"
@@ -1221,7 +1221,7 @@ export default function Home() {
               <div>
                 {/* Calculated IVCCI Display */}
                 <label className="block text-sm font-bold mb-2 text-blue-700 dark:text-blue-300">
-                  IC-VCI
+                  Índice Colapsabilidad VCI
                 </label>
                 <input
                   type="text"
