@@ -82,14 +82,14 @@ export default function Home() {
   const [hasReference, setHasReference] = useState(false);
 
   // State for Observaciones
-  const [hasObLeftVentricle, setHasObLeftVentricle] = useState(null);
-  const [hasObRightVentricle, setHasObRightVentricle] = useState(null);
-  const [hasObLeftAtrium, setHasObLeftAtrium] = useState(null);
-  const [hasObRightAtrium, setHasObRightAtrium] = useState(null);
-  const [hasObMitralValve, setHasObMitralValve] = useState(null);
-  const [hasObAorticValve, setHasObAorticValve] = useState(null);
-  const [hasObPulmonaryValve, setHasObPulmonaryValve] = useState(null);
-  const [hasObTricuspidValve, setHasObTricuspidValve] = useState(null);
+  const [hasObLeftVentricle, setHasObLeftVentricle] = useState(true);
+  const [hasObRightVentricle, setHasObRightVentricle] = useState(true);
+  const [hasObLeftAtrium, setHasObLeftAtrium] = useState(true);
+  const [hasObRightAtrium, setHasObRightAtrium] = useState(true);
+  const [hasObMitralValve, setHasObMitralValve] = useState(true);
+  const [hasObAorticValve, setHasObAorticValve] = useState(true);
+  const [hasObPulmonaryValve, setHasObPulmonaryValve] = useState(true);
+  const [hasObTricuspidValve, setHasObTricuspidValve] = useState(true);
   
   // State for Tricuspid Valve calculation
   const [ivcMaxDiam, setIvcMaxDiam] = useState('');
@@ -672,6 +672,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Ventrículo Izquierdo"
                     required
+                    defaultValue="obser 1"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -854,6 +855,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Ventrículo Derecho"
                     required
+                    defaultValue="obser 2"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -941,6 +943,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Aurícula Izquierda"
                     required
+                    defaultValue="obser 3"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1044,6 +1047,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Aurícula Derecha"
                     required
+                    defaultValue="obser 4"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1163,6 +1167,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Mitral"
                     required
+                    defaultValue="obser 5"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1314,6 +1319,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Aórtica"
                     required
+                    defaultValue="obser 6"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1433,6 +1439,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Pulmonar"
                     required
+                    defaultValue="obser 7"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1596,6 +1603,7 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Tricúspide"
                     required
+                    defaultValue="obser 8"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
