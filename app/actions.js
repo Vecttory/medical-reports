@@ -330,7 +330,7 @@ export async function processReport(prevState, formData) {
       success: true, 
       message: "El documento ha sido generado exitosamente.",
       documentBase64: base64Doc,
-      fileName: `Reporte_${patientData.name.replace(/\s+/g, "_")}.docx`
+      fileName: `InformeEco_${patientData.name.replace(/\s+/g, "_")}.docx`
     };
   } catch (error) {
     console.error("Error generating document:", error);

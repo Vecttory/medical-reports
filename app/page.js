@@ -79,17 +79,17 @@ function AccordionSection({ title, defaultOpen = false, id, isOpen, onToggle, ch
 
 export default function Home() {
   const [state, formAction, isPending] = useActionState(processReport, null);
-  const [hasReference, setHasReference] = useState(false);
+  const [hasReference, setHasReference] = useState(null);
 
   // State for Observaciones
-  const [hasObLeftVentricle, setHasObLeftVentricle] = useState(true);
-  const [hasObRightVentricle, setHasObRightVentricle] = useState(true);
-  const [hasObLeftAtrium, setHasObLeftAtrium] = useState(true);
-  const [hasObRightAtrium, setHasObRightAtrium] = useState(true);
-  const [hasObMitralValve, setHasObMitralValve] = useState(true);
-  const [hasObAorticValve, setHasObAorticValve] = useState(true);
-  const [hasObPulmonaryValve, setHasObPulmonaryValve] = useState(true);
-  const [hasObTricuspidValve, setHasObTricuspidValve] = useState(true);
+  const [hasObLeftVentricle, setHasObLeftVentricle] = useState(null);
+  const [hasObRightVentricle, setHasObRightVentricle] = useState(null);
+  const [hasObLeftAtrium, setHasObLeftAtrium] = useState(null);
+  const [hasObRightAtrium, setHasObRightAtrium] = useState(null);
+  const [hasObMitralValve, setHasObMitralValve] = useState(null);
+  const [hasObAorticValve, setHasObAorticValve] = useState(null);
+  const [hasObPulmonaryValve, setHasObPulmonaryValve] = useState(null);
+  const [hasObTricuspidValve, setHasObTricuspidValve] = useState(null);
   
   // State for Tricuspid Valve calculation
   const [ivcMaxDiam, setIvcMaxDiam] = useState('');
@@ -169,6 +169,33 @@ export default function Home() {
       const radios = form.querySelectorAll(`input[name="${e.target.name}"]`);
       radios.forEach(r => r.setCustomValidity(''));
     }
+
+    // Auto-formatting for all text/textarea inputs
+    if (e.target.type === 'text' || e.target.tagName.toLowerCase() === 'textarea') {
+      let value = e.target.value;
+
+      // 0. Remove any Enter (newline) characters globally
+      value = value.replace(/[\r\n]+/g, '');
+
+      // 1. Prevent starting with a blank space or newline
+      if (/^\s/.test(value)) {
+        value = value.trimStart();
+      }
+
+      // 2. Capitalize the first character if it is a letter
+      if (value.length > 0) {
+        const firstChar = value[0];
+        // Check if the first character is a letter (regex matches any letter, including accents)
+        if (firstChar.match(/[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]/)) {
+          value = firstChar.toUpperCase() + value.slice(1);
+        }
+      }
+
+      // Apply the formatted value back to the input
+      if (e.target.value !== value) {
+        e.target.value = value;
+      }
+    }
   };
 
   const handleSubmit = (e) => {
@@ -224,7 +251,7 @@ export default function Home() {
                 id="name"
                 name="name"
                 required
-                defaultValue="Rui Lopéz"
+                /* defaultValue="Rui Lopéz" */
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
           </div>
@@ -241,7 +268,7 @@ export default function Home() {
                 name="age"
                 min="0"
                 required
-                defaultValue="45"
+                /* defaultValue="45" */
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -270,7 +297,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
-                defaultValue="65"
+                /* defaultValue="65" */
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -287,7 +314,7 @@ export default function Home() {
                 step="0.01"
                 min="0"
                 required
-                defaultValue="1.67"
+                /* defaultValue="1.67" */
                 className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
               />
             </div>
@@ -375,7 +402,7 @@ export default function Home() {
                   name="lvedd"
                   step="0.01"
                   required
-                  defaultValue="4.15"
+                  /* defaultValue="4.15" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -391,7 +418,7 @@ export default function Home() {
                   name="lvedv"
                   step="0.01"
                   required
-                  defaultValue="94.17"
+                  /* defaultValue="94.17" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -407,7 +434,7 @@ export default function Home() {
                   name="lvmass"
                   step="0.01"
                   required
-                  defaultValue="99.47"
+                  /* defaultValue="99.47" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -423,7 +450,7 @@ export default function Home() {
                   name="ivsd"
                   step="0.01"
                   required
-                  defaultValue="0.8"
+                  /* defaultValue="0.8" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -439,7 +466,7 @@ export default function Home() {
                   name="lvided"
                   step="0.01"
                   required
-                  defaultValue="4.2"
+                  /* defaultValue="4.2" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -455,7 +482,7 @@ export default function Home() {
                   name="lvpwd"
                   step="0.01"
                   required
-                  defaultValue="0.78"
+                  /* defaultValue="0.78" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -471,7 +498,7 @@ export default function Home() {
                   name="lvesv"
                   step="0.01"
                   required
-                  defaultValue="28.87"
+                  /* defaultValue="28.87" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -486,7 +513,7 @@ export default function Home() {
                   name="eWave"
                   step="0.01"
                   required
-                  defaultValue="48.84"
+                  /* defaultValue="48.84" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -501,7 +528,7 @@ export default function Home() {
                   name="aWave"
                   step="0.01"
                   required
-                  defaultValue="58.82"
+                  /* defaultValue="58.82" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -517,7 +544,7 @@ export default function Home() {
                   name="lvfdt"
                   step="0.01"
                   required
-                  defaultValue="192"
+                  /* defaultValue="192" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -533,7 +560,7 @@ export default function Home() {
                   name="lfivrt"
                   step="0.01"
                   required
-                  defaultValue="96"
+                  /* defaultValue="96" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -548,7 +575,7 @@ export default function Home() {
                   name="ePrimeSeptal"
                   step="0.01"
                   required
-                  defaultValue="7.79"
+                  /* defaultValue="7.79" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -563,7 +590,7 @@ export default function Home() {
                   name="ePrimeLateral"
                   step="0.01"
                   required
-                  defaultValue="11.38"
+                  /* defaultValue="11.38" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -579,7 +606,7 @@ export default function Home() {
                   name="lvotd"
                   step="0.01"
                   required
-                  defaultValue="2.14"
+                  /* defaultValue="2.14" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -595,7 +622,7 @@ export default function Home() {
                   name="lvar"
                   step="0.01"
                   required
-                  defaultValue="2.99"
+                  /* defaultValue="2.99" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -611,7 +638,7 @@ export default function Home() {
                   name="lvstj"
                   step="0.01"
                   required
-                  defaultValue="2.27"
+                  /* defaultValue="2.27" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -627,7 +654,7 @@ export default function Home() {
                   name="lvaad"
                   step="0.01"
                   required
-                  defaultValue="2.48"
+                  /* defaultValue="2.48" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -672,7 +699,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Ventrículo Izquierdo"
                     required
-                    defaultValue="obser 1"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -699,7 +725,7 @@ export default function Home() {
                   name="rvbd"
                   step="0.01"
                   required
-                  defaultValue="3.88"
+                  /* defaultValue="3.88" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -715,7 +741,7 @@ export default function Home() {
                   name="rvmd"
                   step="0.01"
                   required
-                  defaultValue="2.97"
+                  /* defaultValue="2.97" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -731,7 +757,7 @@ export default function Home() {
                   name="rvld"
                   step="0.01"
                   required
-                  defaultValue="7.15"
+                  /* defaultValue="7.15" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -746,7 +772,7 @@ export default function Home() {
                   name="sWave"
                   step="0.01"
                   required
-                  defaultValue="13.18"
+                  /* defaultValue="13.18" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -762,7 +788,7 @@ export default function Home() {
                   name="rvtapse"
                   step="0.01"
                   required
-                  defaultValue="22"
+                  /* defaultValue="22" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -778,7 +804,7 @@ export default function Home() {
                   name="rveda"
                   step="0.01"
                   required
-                  defaultValue="17.15"
+                  /* defaultValue="17.15" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -794,7 +820,7 @@ export default function Home() {
                   name="rvesa"
                   step="0.01"
                   required
-                  defaultValue="10.18"
+                  /* defaultValue="10.18" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -810,7 +836,7 @@ export default function Home() {
                   name="rvfwt"
                   step="0.01"
                   required
-                  defaultValue="4"
+                  /* defaultValue="4" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -855,7 +881,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Ventrículo Derecho"
                     required
-                    defaultValue="obser 2"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -882,7 +907,7 @@ export default function Home() {
                   name="laapd"
                   step="0.01"
                   required
-                  defaultValue="3.63"
+                  /* defaultValue="3.63" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -898,7 +923,7 @@ export default function Home() {
                   name="lav"
                   step="0.01"
                   required
-                  defaultValue="43.84"
+                  /* defaultValue="43.84" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -943,7 +968,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Aurícula Izquierda"
                     required
-                    defaultValue="obser 3"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -970,7 +994,7 @@ export default function Home() {
                   name="raa"
                   step="0.01"
                   required
-                  defaultValue="15.62"
+                  /* defaultValue="15.62" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -986,7 +1010,7 @@ export default function Home() {
                   name="rav"
                   step="0.01"
                   required
-                  defaultValue="42.19"
+                  /* defaultValue="42.19" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1002,7 +1026,7 @@ export default function Home() {
                   name="rap"
                   step="0.01"
                   required
-                  defaultValue="4.00"
+                  /* defaultValue="4.00" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1047,7 +1071,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Aurícula Derecha"
                     required
-                    defaultValue="obser 4"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1074,7 +1097,7 @@ export default function Home() {
                   name="mvvti"
                   step="0.01"
                   required
-                  defaultValue="21.26"
+                  /* defaultValue="21.26" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1090,7 +1113,7 @@ export default function Home() {
                   name="mvvmax"
                   step="0.01"
                   required
-                  defaultValue="71.31"
+                  /* defaultValue="71.31" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1106,7 +1129,7 @@ export default function Home() {
                   name="mvmg"
                   step="0.01"
                   required
-                  defaultValue="0.81"
+                  /* defaultValue="0.81" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1122,7 +1145,7 @@ export default function Home() {
                   name="mva"
                   step="0.01"
                   required
-                  defaultValue="3.26"
+                  /* defaultValue="3.26" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1167,7 +1190,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Mitral"
                     required
-                    defaultValue="obser 5"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1194,7 +1216,7 @@ export default function Home() {
                   name="avvti"
                   step="0.01"
                   required
-                  defaultValue="26.29"
+                  /* defaultValue="26.29" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1210,7 +1232,7 @@ export default function Home() {
                   name="lvotvti"
                   step="0.01"
                   required
-                  defaultValue="18.02"
+                  /* defaultValue="18.02" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1226,7 +1248,7 @@ export default function Home() {
                   name="avMaxGrad"
                   step="0.01"
                   required
-                  defaultValue="7.98"
+                  /* defaultValue="7.98" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1242,7 +1264,7 @@ export default function Home() {
                   name="avMeanGrad"
                   step="0.01"
                   required
-                  defaultValue="3.62"
+                  /* defaultValue="3.62" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1258,7 +1280,7 @@ export default function Home() {
                   name="avvmax"
                   step="0.01"
                   required
-                  defaultValue="141.18"
+                  /* defaultValue="141.18" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1274,7 +1296,7 @@ export default function Home() {
                   name="avao"
                   step="0.01"
                   required
-                  defaultValue="2.46"
+                  /* defaultValue="2.46" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1319,7 +1341,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Aórtica"
                     required
-                    defaultValue="obser 6"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1346,7 +1367,7 @@ export default function Home() {
                   name="pvvmax"
                   step="0.01"
                   required
-                  defaultValue="88.42"
+                  /* defaultValue="88.42" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1362,7 +1383,7 @@ export default function Home() {
                   name="rvotvti"
                   step="0.01"
                   required
-                  defaultValue="13.86"
+                  /* defaultValue="13.86" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1378,7 +1399,7 @@ export default function Home() {
                   name="pvat"
                   step="0.01"
                   required
-                  defaultValue="172"
+                  /* defaultValue="172" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1394,7 +1415,7 @@ export default function Home() {
                   name="pvd"
                   step="0.01"
                   required
-                  defaultValue="2.02"
+                  /* defaultValue="2.02" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1439,7 +1460,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Pulmonar"
                     required
-                    defaultValue="obser 7"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
@@ -1467,7 +1487,7 @@ export default function Home() {
                   name="trvmax"
                   step="0.01"
                   required
-                  defaultValue="222.32"
+                  /* defaultValue="222.32" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1483,7 +1503,7 @@ export default function Home() {
                   name="trMaxGrad"
                   step="0.01"
                   required
-                  defaultValue="20.5"
+                  /* defaultValue="20.5" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1505,7 +1525,7 @@ export default function Home() {
                     handleInput(e);
                   }}
                   onInvalid={handleInvalid}
-                  defaultValue="1.72"
+                  /* defaultValue="1.72" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1527,23 +1547,7 @@ export default function Home() {
                     handleInput(e);
                   }}
                   onInvalid={handleInvalid}
-                  defaultValue="1.00"
-                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-                />
-              </div>
-
-              <div>
-                {/* PSAP: Pulmonary Systolic Arterial Pressure */}
-                <label htmlFor="psap" className="block text-sm font-bold mb-2">
-                  PSAP (mmHg)
-                </label>
-                <input
-                  type="number"
-                  id="psap"
-                  name="psap"
-                  step="0.01"
-                  required
-                  defaultValue="24"
+                  /* defaultValue="1.00" */
                   className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                 />
               </div>
@@ -1561,6 +1565,22 @@ export default function Home() {
                   placeholder="-"
                 />
                 <input type="hidden" name="ivcci" value={ivcciDisplay} />
+              </div>
+
+              <div>
+                {/* PSAP: Pulmonary Systolic Arterial Pressure */}
+                <label htmlFor="psap" className="block text-sm font-bold mb-2">
+                  PSAP (mmHg)
+                </label>
+                <input
+                  type="number"
+                  id="psap"
+                  name="psap"
+                  step="0.01"
+                  required
+                  /* defaultValue="24" */
+                  className="scroll-mt-12 w-full px-2 py-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                />
               </div>
 
               {/* Observaciones Tricuspid Valve */}
@@ -1603,7 +1623,6 @@ export default function Home() {
                     rows="3"
                     aria-label="Observaciones Válvula Tricúspide"
                     required
-                    defaultValue="obser 8"
                     className="scroll-mt-12 w-full px-2 py-2 mt-2 border-1 border-slate-400 dark:border-slate-500 rounded-lg bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-y"
                   ></textarea>
                 )}
